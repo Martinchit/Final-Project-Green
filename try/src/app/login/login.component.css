@@ -1,0 +1,14 @@
+form, h1 {
+    text-align: center;
+}
+form {
+    padding: 20px 100px;
+}
+#fb {
+    text-align: center;
+    margin: 30px center;
+}
+#fb i {
+    cursor: pointer;
+    color: #3b5998;
+}

@@ -1,0 +1,48 @@
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.row {
+    margin: 20px auto;
+}
+#img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+img {
+    height: 300px;
+    width: 400px;
+}
+#content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.title {
+    text-align: left;
+    margin: 20px auto; 
+    line-height: 110%;
+}
+.description {
+    margin-top: 0px;
+    line-height: 130%;
+    text-align: left;
+}
+.link {
+    margin-top: 40px;
+    margin-left: 15px;
+    text-align: right;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+h5 {
+    font-size: 20px;
+    color: rgb(1, 48, 16);
+}
+a:hover {
+    text-decoration: none;
+}

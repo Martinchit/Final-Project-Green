@@ -1,0 +1,12 @@
+#profile {
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+.a {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+}

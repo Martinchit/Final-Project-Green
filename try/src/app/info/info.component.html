@@ -1,0 +1,52 @@
+<h1>Charging Station in HK</h1>
+
+<div id='agm'>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" id="map">
+    <agm-marker *ngFor="let location of locations; let i = index" (markerClick)="getPic(location)" [latitude]='location.lat' [longitude]='location.lng'>
+      <agm-info-window  class='agm-info-window-content' [isOpen]='open'>
+        <h4>
+          <strong>{{location.location}}</strong>
+        </h4>
+        <br>
+        <img [src]="img">
+        <br>
+        <button class='btn btn-danger' (click)="more(location)">More</button>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+
+<div *ngIf="address">
+  <iframe width="600" height="450" frameborder="0" style="border:0" [src]="address" allowfullscreen></iframe>
+</div>
+
+<div id="table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Region</th>
+        <th scope="col">Parking</th>
+        <th scope="col">District</th>
+        <th scope="col">Provider</th>
+        <th scope="col">Parking Lot</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let station of stations">
+        <th scope="row">{{station.districtL}}</th>
+        <td>{{station.location}}</td>
+        <td>{{station.districtS}}</td>
+        <td>{{station.provider}}</td>
+        <td>{{station.parkingNo}}</td>
+        <td><button class="btn btn-info" (click)="loc(station)">Location</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class='a'>
+  <a (click)='logout()' routerLink="/home" class='btn btn-warning'>Log Out</a>
+</div>

@@ -1,0 +1,44 @@
+<div id="header">
+  <h1>Find your nearest Charging Station</h1>
+</div>
+
+<div id="img">
+  <img src="../../assets/charginstation.JPG" alt="Charging Station">
+</div>
+
+<div id="button">
+  <button class='btn btn-danger' [disabled]="!(lat && lng)" (click)="getStation()">Nearest Charging station</button>
+</div>
+
+<div id="table" *ngIf="stations">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">District</th>
+        <th scope="col">Parking</th>
+        <th scope="col">Provider</th>
+        <th scope="col">Parking Lot</th>
+        <th scope="col">Location</th>
+        <th scope="col">Distance (km)</th>
+        <th scope="col">Direction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let station of stations">
+        <th scope="row">{{station.districtS}}</th>
+        <td>{{station.name}}</td>
+        <td>{{station.provider}}</td>
+        <td>{{station.parkingNo || Unknown}}</td>
+        <td>{{station.address}}</td>
+        <td>{{station.distance}}</td>
+        <td><button class="btn btn-info" (click)="loc(station)">Let's Go</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class='a'>
+  <a (click)='logout()' routerLink="/home" class='btn btn-warning'>Log Out</a>
+</div>

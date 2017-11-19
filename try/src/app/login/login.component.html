@@ -1,0 +1,42 @@
+<h1>Please Sign Up or Log in</h1>
+
+<div class='row'>
+  <form [formGroup]="signUpForm" (ngSubmit)='signUp(signUpForm)' class='col-sm-6 col-xs-12'>
+    <h1>Sign Up</h1>
+    <div class='form-group'>
+      <label>Email</label>
+      <input type="text" class='form-control' name='email' formControlName='email'>
+      <div *ngIf="(signUpForm.controls['email'].hasError('pattern') || signUpForm.controls['email'].hasError('required')) && (signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)" class="alert alert-info">
+        Be aware to enter the correct pattern!
+      </div>
+    </div>
+    <div class='form-group'>
+      <label>Password</label>
+      <input type="password" class='form-control' name='password' formControlName='password'>
+      <div *ngIf="signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpform.controls['password'].touched)" class='alert alert-info'>
+        Password should consist of 8 digits or characters
+      </div>
+    </div>
+    <input type="submit" class='btn btn-success' value='submit' [disabled]='!signUpForm.valid'>
+  </form>
+
+
+  <form [formGroup]="logInForm" (ngSubmit)='logIn(logInForm)' class='col-sm-6 col-xs-12'>
+    <h1>Log In</h1>
+    <div class='form-group'>
+      <label>Email</label>
+      <input type="text" class='form-control' name='email' formControlName='email'>
+    </div>
+    <div class='form-group'>
+      <label>Password</label>
+      <input type="password" class='form-control' name='password' formControlName='password'>
+    </div>
+    <input type="submit" class='btn btn-success' value='submit' [disabled]='!logInForm.valid'>
+  </form>
+</div>
+
+
+<div id="fb">
+  <i (click)='signUpFacebook()' class="fa fa-facebook-official fa-5x" aria-hidden="true"></i>
+  <h3>You can use Facebook to log in as well!</h3>
+</div>

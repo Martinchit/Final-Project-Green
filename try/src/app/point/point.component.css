@@ -1,0 +1,26 @@
+#button {
+    text-align: center;
+    margin: 20px auto;
+}
+#img {
+    text-align: center;
+    margin: 30px auto;
+}
+#header {
+    text-align: center;
+}
+table {
+    text-align: center;
+}
+th {
+    text-align: center;
+}
+#table {
+    width: 80%;
+    margin: 20px auto;
+}
+.a {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+}
