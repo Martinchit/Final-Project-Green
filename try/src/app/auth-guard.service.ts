@@ -11,10 +11,11 @@ export class AuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     console.log(this.authService.token);
     console.log(this.authService.isAuthenicated());
+    console.log(this.facebookService.isAuthenicated());
     if (this.authService.isAuthenicated() || this.facebookService.isAuthenicated()) {
       return true;
     } else {
-      alert('You don\'t have permission to view this page');
+      alert('Please log in first!');
       this.router.navigate(['/login']);
       return false;
     }

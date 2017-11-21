@@ -20,6 +20,7 @@
           <th scope="col">Distance (km)</th>
           <th scope="col">Direction</th>
           <th scope="col">Street View</th>
+          <th scope="col">Favorite</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,7 @@
           <td>{{bin.distance}}</td>
           <td><button class="btn btn-info" (click)="loc(bin)">Let's Go</button></td>
           <td><button class="btn btn-info" (click)="view(bin)">Check</button></td>
+          <td><button class='star' (click)="favorite(bin)"><i class="fa fa-2x fa-star" aria-hidden="true"></i></button></td>
         </tr>
       </tbody>
     </table>

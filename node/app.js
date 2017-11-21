@@ -77,7 +77,7 @@ app.post('/api/station/closest', (req, res) => {
 });
 
 app.post('/api/signUp', (req, res) => [
-    Bcrypt.hashPassword(req.body.passwor).then((hash) => {
+    Bcrypt.hashPassword(req.body.password).then((hash) => {
         client.hgetall('recyclers', (err, data) => {
             if (data !== null) {
                 let obj = data;
@@ -100,14 +100,13 @@ app.post('/api/signUp', (req, res) => [
                     email: req.body.email,
                     password: hash
                 });
+                console.log(obj);
                 client.hmset('recyclers', obj);
                 let payload = {
                     id: req.body.email
                 };
                 let token = jwt.encode(payload, config.jwtSecret);
-                res.json({
-                    token: token
-                });
+                res.json(token);
             }
         });
 
@@ -116,27 +115,29 @@ app.post('/api/signUp', (req, res) => [
 
 app.post('/api/logIn', (req, res) => {
     if (req.body.email && req.body.password) {
-        Bcrypt.hashPassword(req.body.password).then((hash) => {
-            client.hmget('recyclers', (err, data) => {
-                let users = Object.values(data).mao((user) => {
+            client.hgetall('recyclers', (err, data) => {
+                let users = Object.values(data).map((user) => {
                     return JSON.parse(user)
                 });
                 let verify = users.find((user) => {
-                    return user.email === req.body.email && user.password === hash;
+                    return user.email === req.body.email;
                 });
-                if (verify) {
-                    let payload = {
-                        id: user.email
-                    };
-                    let token = jwt.encode(payload, config.jwtSecret);
-                    res.json(token);
-                } else {
+                console.log(verify);
+                Bcrypt.checkPassword(req.body.password, verify.password).then((result) => {
+                    console.log(result)
+                    if(result) {
+                        let payload = {
+                            id: verify.email
+                        };  
+                        let token = jwt.encode(payload, config.jwtSecret);
+                        res.json(token);
+                    }  else {
                     res.sendStatus(401);
-                }
+                    }
+                });
             });
-        });
     } else {
-        res.sendStatus(401);
+            res.sendStatus(401);
     }
 });
 
@@ -164,10 +165,15 @@ app.post('/api/recyclingBin', (req, res) => {
 });
 
 app.get('/api/news', (req, res) => {
-    axios.get('https://newsapi.org/v2/everything?q=environment&sources=new-scientist,national-geographic&apiKey=9bf03db1bfd5446badc27f37ab0bad5d').then((data) => {
+    axios.get('https://newsapi.org/v2/everything?q=environment&sources=new-scientist,national-geographic,business-insider&apiKey=9bf03db1bfd5446badc27f37ab0bad5d').then((data) => {
         res.json(data.data.articles)
     })
+})
 
+app.post('/api/selected_news', (req, res) => {
+    axios.get('https://newsapi.org/v2/everything?q=environment&sources=' + req.body.choice + '&apiKey=9bf03db1bfd5446badc27f37ab0bad5d').then((data) => {
+        res.json(data.data.articles)
+    })
 })
 
 reloadServer = reload(app);

@@ -76,4 +76,11 @@ export class InfoComponent implements OnInit {
   logout() {
     this.authService.logOut();
   }
+
+  favorite(input: any) {
+    // tslint:disable-next-line:prefer-const
+    let obj = input;
+    obj['email'] = this.authService.token;
+    return this.serverService.postFavChargers(obj).subscribe();
+  }
 }

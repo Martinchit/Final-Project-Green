@@ -15,3 +15,14 @@ module.exports.hashPassword = (password) => {
         });
     });
 };
+
+module.exports.checkPassword = (plainTextPassword, hashedPassword) => {
+    return new Promise((resolve, reject) => {
+        Bcrypt.compare(plainTextPassword, hashedPassword, (err, match) => {
+            if(err) {
+                reject(err);
+            }
+            resolve(match);
+        });
+    });
+};

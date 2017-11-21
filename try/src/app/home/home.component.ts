@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ServerService } from '../server.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AUTHService } from '../auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,12 +12,23 @@ import { ServerService } from '../server.service';
 })
 export class HomeComponent implements OnInit {
 
+  token: Observable<string>;
 
-  constructor(private serverService: ServerService) { }
+  newsForm = new FormGroup({
+    choice: new FormControl(null, Validators.required)
+  });
+
+
+  constructor(private serverService: ServerService, private authService: AUTHService) { }
 
   news: any;
 
   ngOnInit() {
+    this.token = new Observable((observer) => {
+      setInterval(() => {
+        observer.next(this.authService.token);
+      }, 500);
+    });
     this.serverService.getNews().subscribe((data) => {
       this.news = data;
       console.log(this.news);
@@ -23,6 +37,12 @@ export class HomeComponent implements OnInit {
 
   url(input: any) {
     window.open(input.url, '', 'width=800,height=600');
+  }
+
+  choice(form: any) {
+    this.serverService.getSelectedNews(form.value).subscribe((data) => {
+      this.news = data;
+    });
   }
 
   // success(pos) {
@@ -36,6 +56,15 @@ export class HomeComponent implements OnInit {
   //   console.log(this.lat);
   // }
 
+  favorite(input: any) {
+    // tslint:disable-next-line:prefer-const
+    let obj = input;
+    obj['email'] = this.authService.token;
+    return this.serverService.postFavNews(input).subscribe();
+  }
 
+  logout() {
+    this.authService.logOut();
+  }
 
 }

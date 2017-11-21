@@ -1,12 +1,66 @@
-<div id='profile'>
+<div id='profile' class='row'>
 
-  <h1>
-    account works!
-  </h1>
+  <div class='col-sm-4' id='info'>
+    
+
+  </div>
+
+  <div class='col-sm-8' id='favorite'>
+    <div id='button'>
+      <button class='i' (click)='getNews()'><i class="fa fa-newspaper-o fa-4x" aria-hidden="true"></i></button>
+      <button class='i' (click)='getChargers()'><i class="fa fa-4x fa-battery-full" aria-hidden="true"></i></button>
+      <button class='i' (click)='getBins()'><i class="fa fa-4x fa-trash" aria-hidden="true"></i></button>
+    </div>
+
+    <div *ngIf='news' id='items'>
+      <div *ngFor='let new of news' id='box'>
+        <div><img src="{{new.urlToImage}}" alt="News Image" style='height: 210px; width: 300px;'></div>
+        <div class='chargerDetails'>
+          <h3>News Title:</h3>
+          <h5>{{new.title}} <button class='i' (click)="url(new)"><i class="fa fa-link" aria-hidden="true"></i></button></h5>
+          <h3>News Description:</h3>
+          <h5>{{new.description}}</h5>
+          <h3>News Author:</h3>
+          <h5>{{new.author}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf='chargers' id='items'>
+      <div *ngFor='let charger of chargers'>
+        <div class='binDetails'>
+          <h3>Parking: {{charger.location}}</h3>
+          <h3>Address: {{charger.address}}</h3>
+          <h3>Provider: {{charger.provider}}</h3>
+          <h3>Parking No.: {{charger.parkingNo}}</h3>
+          <div id='binButtons'>
+            <td><button class="btn btn-info" (click)="loc(charger)">Location</button></td>
+            <td><button class="btn btn-info" (click)="view(charger)">Street View</button></td>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf='bins' id='items'>
+      <div *ngFor='let bin of bins'>
+          <div class='binDetails'>
+            <h3>Location:</h3>
+            <h3>{{bin.location}}</h3>
+            <h3>Waste Type: {{bin.wasteType}}</h3>
+            <div id='binButtons'>
+              <td><button class="btn btn-info" (click)="loc(bin)">Location</button></td>
+              <td><button class="btn btn-info" (click)="view(bin)">Street View</button></td>
+            </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
 </div>
 
 
 <div class='a'>
-  <a routerLink="/home" class='btn btn-warning'>Log Out</a>
+  <a (click)='logout()' routerLink="/home" class='btn btn-warning'>Log Out</a>
 </div>

@@ -14,11 +14,11 @@ const routes: Routes = [
     { path : '', redirectTo: '/home', pathMatch: 'full'},
     { path : 'home', component: HomeComponent},
     { path : 'login', component: LoginComponent},
-    { path : 'account', component: AccountComponent},
-    { path : 'street_view', component : MapComponent},
-    { path : 'station_point', component: PointComponent},
-    { path : 'info', component : InfoComponent},
-    { path : 'recycling_bin', component: RecycleComponent},
+    { path : 'account', component: AccountComponent, canActivate: [AuthGuardService]},
+    { path : 'street_view', component : MapComponent, canActivate: [AuthGuardService]},
+    { path : 'station_point', component: PointComponent, canActivate: [AuthGuardService]},
+    { path : 'info', component : InfoComponent, canActivate: [AuthGuardService]},
+    { path : 'recycling_bin', component: RecycleComponent, canActivate: [AuthGuardService]},
     { path : '**', component: PageNotFoundComponent}
 ];
 

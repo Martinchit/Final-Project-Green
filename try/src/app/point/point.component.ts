@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
+import { AUTHService } from '../auth.service';
 
 @Component({
   selector: 'app-point',
@@ -19,7 +20,7 @@ export class PointComponent implements OnInit {
     maximumAge: 0
   };
 
-  constructor(private serverService: ServerService) { }
+  constructor(private serverService: ServerService, private authService: AUTHService) { }
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -44,5 +45,15 @@ export class PointComponent implements OnInit {
   loc(input: any) {
     console.log(input);
     window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
+  }
+
+  logout() {
+    this.authService.logOut();
+  }
+  favorite(input: any) {
+    // tslint:disable-next-line:prefer-const
+    let obj = input;
+    obj['email'] = this.authService.token;
+    return this.serverService.postFavChargers(obj).subscribe();
   }
 }

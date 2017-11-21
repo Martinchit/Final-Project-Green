@@ -24,3 +24,8 @@ th {
     display: flex;
     justify-content: space-around;
 }
+.star {
+    background: none;
+    border: none;
+    color: rgb(229,229,0);
+}

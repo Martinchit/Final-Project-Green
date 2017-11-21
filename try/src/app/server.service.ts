@@ -23,4 +23,33 @@ export class ServerService {
   getNews() {
     return this.http.get(environment.hostName + '/api/news').map((res) => res.json());
   }
+
+  getSelectedNews(source: string) {
+    console.log(source);
+    return this.http.post(environment.hostName + '/api/selected_news', source).map((res) => res.json());
+  }
+
+  postFavChargers(chargers: any) {
+    return this.http.post('https://finalprojectstations.firebaseio.com/.json', chargers);
+  }
+
+  getFavChargers() {
+    return this.http.get('https://finalprojectstations.firebaseio.com/.json');
+  }
+
+  postFavBins(bins: any) {
+    return this.http.post('https://finalproject-d3288.firebaseio.com/.json', bins);
+  }
+
+  getFavBins() {
+    return this.http.get('https://finalproject-d3288.firebaseio.com/.json');
+  }
+
+  postFavNews(news: any) {
+    return this.http.post('https://finalprojectnews.firebaseio.com/.json', news);
+  }
+
+  getFavNews() {
+    return this.http.get('https://finalprojectnews.firebaseio.com/.json');
+  }
 }

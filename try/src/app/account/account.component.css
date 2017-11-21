@@ -1,3 +1,7 @@
+h1, h2, h3 {
+    margin-top: 0px; 
+}
+
 #profile {
     display: flex;
     justify-content: center;
@@ -9,4 +13,33 @@ h1 {
     margin: 20px auto;
     display: flex;
     justify-content: space-around;
+}
+#button {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.i {
+    background: none;
+    border: none;
+}
+#favorite {
+    margin-top: 10px;
+}
+#box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+#binButtons {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+.btn {
+    margin-right: 10px;
+}
+.chargerDetails {
+    margin-left: 8px;
 }

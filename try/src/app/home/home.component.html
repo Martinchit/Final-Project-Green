@@ -1,17 +1,42 @@
 <h1>Let's Have some News about our Environment</h1>
 
+
+<form [formGroup]='newsForm' (ngSubmit)='choice(newsForm)'>
+    <div class='form-group'>
+        <label>Source</label>
+        <select name="choice" formControlName='choice' class='form-control'>
+            <option value='bbc-news'>BBC News</option>
+            <option value='bloomberg'>Bloomberg</option>
+            <option value='cnn'>CNN</option>
+            <option value='fox-news'>Fox News</option>
+            <option value='national-geographic'>National Geographic</option>
+            <option value='new-scientist'>New Scientist</option>
+            <option value='the-new-york-times'>The New York Times</option>
+        </select>
+    </div>
+    <button class="btn btn-success" type='submit' [disabled]='!newsForm.valid'>Submit</button>
+</form>
+
 <div *ngFor='let new of news'>
     <div class='row' id='content'>
         <div id='img' class='col-sm-4'>
             <img src="{{new.urlToImage}}" alt="News Image">
         </div>
         <div id='content' class='col-sm-8'>
-            <h1 class='title'>{{new.title}}</h1>
+            <div>
+                <h2 class='title'>{{new.title}}</h2>
+            </div>
             <br>
-            <h3 class='description'>{{new.description}}</h3>
+            <h4 class='description'>{{new.description}}</h4>
             <div class='link'>
                 <a (click)="url(new)" target='_'><h5>{{new.source.name}}</h5></a>
+                <button *ngIf='token | async' class='star' (click)="favorite(new)"><i class="fa fa-2x fa-star" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
 </div>
+
+<div class='a'>
+    <a *ngIf='token | async' (click)='logout()' routerLink="/home" class='btn btn-warning'>Log Out</a>
+</div>
+      

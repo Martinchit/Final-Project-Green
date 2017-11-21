@@ -33,6 +33,7 @@ export class RecycleComponent implements OnInit {
 
   getBin() {
     this.serverService.getBin({lat: this.lat, lng: this.lng}).subscribe((data) => {
+      console.log(data);
       this.bins = data;
       console.log(data);
     });
@@ -59,6 +60,13 @@ export class RecycleComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
+  }
+
+  favorite(input: any) {
+    // tslint:disable-next-line:prefer-const
+    let obj = input;
+    obj['email'] = this.authService.token;
+    return this.serverService.postFavBins(obj).subscribe();
   }
 
 }

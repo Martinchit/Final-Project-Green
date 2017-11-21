@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#profile {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\nh1 {\n    text-align: center;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}", ""]);
+exports.push([module.i, "h1, h2, h3 {\n    margin-top: 0px; \n}\n\n#profile {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\nh1 {\n    text-align: center;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n#button {\n    text-align: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    margin-bottom: 20px;\n}\n.i {\n    background: none;\n    border: none;\n}\n#favorite {\n    margin-top: 10px;\n}\n#box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    margin-bottom: 15px;\n}\n#binButtons {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    margin-bottom: 10px;\n}\n.btn {\n    margin-right: 10px;\n}\n.chargerDetails {\n    margin-left: 8px;\n}", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/account/account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id='profile'>\n\n  <h1>\n    account works!\n  </h1>\n\n</div>\n\n\n<div class='a'>\n  <a routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
+module.exports = "<div id='profile' class='row'>\n\n  <div class='col-sm-4' id='info'>\n    \n\n  </div>\n\n  <div class='col-sm-8' id='favorite'>\n    <div id='button'>\n      <button class='i' (click)='getNews()'><i class=\"fa fa-newspaper-o fa-4x\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getChargers()'><i class=\"fa fa-4x fa-battery-full\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getBins()'><i class=\"fa fa-4x fa-trash\" aria-hidden=\"true\"></i></button>\n    </div>\n\n    <div *ngIf='news' id='items'>\n      <div *ngFor='let new of news' id='box'>\n        <div><img src=\"{{new.urlToImage}}\" alt=\"News Image\" style='height: 210px; width: 300px;'></div>\n        <div class='chargerDetails'>\n          <h3>News Title:</h3>\n          <h5>{{new.title}} <button class='i' (click)=\"url(new)\"><i class=\"fa fa-link\" aria-hidden=\"true\"></i></button></h5>\n          <h3>News Description:</h3>\n          <h5>{{new.description}}</h5>\n          <h3>News Author:</h3>\n          <h5>{{new.author}}</h5>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='chargers' id='items'>\n      <div *ngFor='let charger of chargers'>\n        <div class='binDetails'>\n          <h3>Parking: {{charger.location}}</h3>\n          <h3>Address: {{charger.address}}</h3>\n          <h3>Provider: {{charger.provider}}</h3>\n          <h3>Parking No.: {{charger.parkingNo}}</h3>\n          <div id='binButtons'>\n            <td><button class=\"btn btn-info\" (click)=\"loc(charger)\">Location</button></td>\n            <td><button class=\"btn btn-info\" (click)=\"view(charger)\">Street View</button></td>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='bins' id='items'>\n      <div *ngFor='let bin of bins'>\n          <div class='binDetails'>\n            <h3>Location:</h3>\n            <h3>{{bin.location}}</h3>\n            <h3>Waste Type: {{bin.wasteType}}</h3>\n            <div id='binButtons'>\n              <td><button class=\"btn btn-info\" (click)=\"loc(bin)\">Location</button></td>\n              <td><button class=\"btn btn-info\" (click)=\"view(bin)\">Street View</button></td>\n            </div>\n      </div>\n    </div>\n\n  </div>\n\n</div>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
 
 /***/ }),
 
@@ -48,6 +48,9 @@ module.exports = "<div id='profile'>\n\n  <h1>\n    account works!\n  </h1>\n\n<
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,10 +61,110 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var AccountComponent = (function () {
-    function AccountComponent() {
+    function AccountComponent(serverService, router, authService) {
+        this.serverService = serverService;
+        this.router = router;
+        this.authService = authService;
+        this.options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
     }
     AccountComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.news = [];
+        navigator.geolocation.getCurrentPosition(function (pos) {
+            _this.lat = pos.coords.latitude;
+            _this.lng = pos.coords.longitude;
+        }, this.error, this.options);
+        this.serverService.getFavNews().subscribe(function (data) {
+            if (JSON.parse(data['_body']) == undefined) {
+                return false;
+            }
+            var ref = Object.values(JSON.parse(data['_body']));
+            ref.forEach(function (news) {
+                if (news.email === _this.authService.token) {
+                    _this.news.push(news);
+                }
+            });
+        });
+    };
+    AccountComponent.prototype.error = function (err) {
+        console.warn("ERROR(" + err.code + "): " + err.message);
+        window.location.reload(true);
+    };
+    AccountComponent.prototype.getNews = function () {
+        var _this = this;
+        this.chargers = null;
+        this.bins = null;
+        this.news = [];
+        this.serverService.getFavNews().subscribe(function (data) {
+            if (JSON.parse(data['_body']) == undefined) {
+                return false;
+            }
+            var ref = Object.values(JSON.parse(data['_body']));
+            ref.forEach(function (news) {
+                if (news.email === _this.authService.token) {
+                    _this.news.push(news);
+                }
+            });
+        });
+    };
+    AccountComponent.prototype.url = function (input) {
+        window.open(input.url, '', 'width=800,height=600');
+    };
+    AccountComponent.prototype.getChargers = function () {
+        var _this = this;
+        this.news = null;
+        this.bins = null;
+        this.chargers = [];
+        this.serverService.getFavChargers().subscribe(function (data) {
+            if (JSON.parse(data['_body']) == undefined) {
+                return false;
+            }
+            var ref = Object.values(JSON.parse(data['_body']));
+            ref.forEach(function (charger) {
+                if (charger.email === _this.authService.token) {
+                    _this.chargers.push(charger);
+                }
+            });
+        });
+    };
+    AccountComponent.prototype.getBins = function () {
+        var _this = this;
+        this.news = null;
+        this.chargers = null;
+        this.bins = [];
+        this.serverService.getFavBins().subscribe(function (data) {
+            if (JSON.parse(data['_body']) == undefined) {
+                return false;
+            }
+            var ref = Object.values(JSON.parse(data['_body']));
+            ref.forEach(function (bin) {
+                if (bin.email === _this.authService.token) {
+                    _this.bins.push(bin);
+                }
+            });
+        });
+    };
+    AccountComponent.prototype.loc = function (input) {
+        console.log(input);
+        window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
+    };
+    AccountComponent.prototype.view = function (input) {
+        this.router.navigate(['/street_view', {
+                lat: input.lat,
+                lng: input.lng,
+                location: JSON.stringify(input)
+            }]);
+    };
+    AccountComponent.prototype.logout = function () {
+        this.authService.logOut();
     };
     return AccountComponent;
 }());
@@ -71,9 +174,10 @@ AccountComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/account/account.component.html"),
         styles: [__webpack_require__("../../../../../src/app/account/account.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */]) === "function" && _c || Object])
 ], AccountComponent);
 
+var _a, _b, _c;
 //# sourceMappingURL=account.component.js.map
 
 /***/ }),
@@ -93,7 +197,8 @@ AccountComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__point_point_component__ = __webpack_require__("../../../../../src/app/point/point.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__account_account_component__ = __webpack_require__("../../../../../src/app/account/account.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__recycle_recycle_component__ = __webpack_require__("../../../../../src/app/recycle/recycle.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__auth_guard_service__ = __webpack_require__("../../../../../src/app/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__recycle_recycle_component__ = __webpack_require__("../../../../../src/app/recycle/recycle.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -110,15 +215,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_5__home_home_component__["a" /* HomeComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_7__login_login_component__["a" /* LoginComponent */] },
-    { path: 'account', component: __WEBPACK_IMPORTED_MODULE_8__account_account_component__["a" /* AccountComponent */] },
-    { path: 'street_view', component: __WEBPACK_IMPORTED_MODULE_2__map_map_component__["a" /* MapComponent */] },
-    { path: 'station_point', component: __WEBPACK_IMPORTED_MODULE_6__point_point_component__["a" /* PointComponent */] },
-    { path: 'info', component: __WEBPACK_IMPORTED_MODULE_3__info_info_component__["a" /* InfoComponent */] },
-    { path: 'recycling_bin', component: __WEBPACK_IMPORTED_MODULE_9__recycle_recycle_component__["a" /* RecycleComponent */] },
+    { path: 'account', component: __WEBPACK_IMPORTED_MODULE_8__account_account_component__["a" /* AccountComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]] },
+    { path: 'street_view', component: __WEBPACK_IMPORTED_MODULE_2__map_map_component__["a" /* MapComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]] },
+    { path: 'station_point', component: __WEBPACK_IMPORTED_MODULE_6__point_point_component__["a" /* PointComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]] },
+    { path: 'info', component: __WEBPACK_IMPORTED_MODULE_3__info_info_component__["a" /* InfoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]] },
+    { path: 'recycling_bin', component: __WEBPACK_IMPORTED_MODULE_10__recycle_recycle_component__["a" /* RecycleComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppRoutingModule = (function () {
@@ -138,7 +244,7 @@ AppRoutingModule = __decorate([
 ], AppRoutingModule);
 
 // tslint:disable-next-line:max-line-length
-var routingComponents = [__WEBPACK_IMPORTED_MODULE_2__map_map_component__["a" /* MapComponent */], __WEBPACK_IMPORTED_MODULE_3__info_info_component__["a" /* InfoComponent */], __WEBPACK_IMPORTED_MODULE_4__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */], __WEBPACK_IMPORTED_MODULE_5__home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_6__point_point_component__["a" /* PointComponent */], __WEBPACK_IMPORTED_MODULE_7__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_8__account_account_component__["a" /* AccountComponent */], __WEBPACK_IMPORTED_MODULE_9__recycle_recycle_component__["a" /* RecycleComponent */]];
+var routingComponents = [__WEBPACK_IMPORTED_MODULE_2__map_map_component__["a" /* MapComponent */], __WEBPACK_IMPORTED_MODULE_3__info_info_component__["a" /* InfoComponent */], __WEBPACK_IMPORTED_MODULE_4__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */], __WEBPACK_IMPORTED_MODULE_5__home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_6__point_point_component__["a" /* PointComponent */], __WEBPACK_IMPORTED_MODULE_7__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_8__account_account_component__["a" /* AccountComponent */], __WEBPACK_IMPORTED_MODULE_10__recycle_recycle_component__["a" /* RecycleComponent */]];
 //# sourceMappingURL=app-routing.module.js.map
 
 /***/ }),
@@ -322,11 +428,12 @@ var AuthGuardService = (function () {
     AuthGuardService.prototype.canActivate = function (route, state) {
         console.log(this.authService.token);
         console.log(this.authService.isAuthenicated());
+        console.log(this.facebookService.isAuthenicated());
         if (this.authService.isAuthenicated() || this.facebookService.isAuthenicated()) {
             return true;
         }
         else {
-            alert('You don\'t have permission to view this page');
+            alert('Please log in first!');
             this.router.navigate(['/login']);
             return false;
         }
@@ -373,8 +480,8 @@ var AUTHService = (function () {
     AUTHService.prototype.signUp = function (input) {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
-            console.log(res.json);
-            _this.token = res.json().token;
+            console.log(res.json());
+            _this.token = res.json();
             _this.router.navigate(['/account']);
         }, function (err) {
             alert(err);
@@ -384,14 +491,14 @@ var AUTHService = (function () {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/logIn', input).subscribe(function (res) {
             console.log(res.json());
-            _this.token = res.json().token;
+            _this.token = res.json();
             _this.router.navigate(['/account']);
         }, function (err) {
             alert(err);
         });
     };
     AUTHService.prototype.isAuthenicated = function () {
-        return this.token !== undefined;
+        return this.token != undefined;
     };
     AUTHService.prototype.logOut = function () {
         return this.token = null;
@@ -431,6 +538,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var FacebookService = (function () {
+    // clicked = false;
     function FacebookService(authService, router) {
         this.authService = authService;
         this.router = router;
@@ -444,7 +552,6 @@ var FacebookService = (function () {
         var _this = this;
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_angular4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
         this.authService.authState.subscribe(function (user) {
-            console.log(user);
             _this.user = user;
         });
         this.router.navigate(['/account']);
@@ -476,7 +583,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n    text-align: center;\n    margin-bottom: 40px;\n}\n.row {\n    margin: 20px auto;\n}\n#img {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\nimg {\n    height: 300px;\n    width: 400px;\n}\n#content {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n.title {\n    text-align: left;\n    margin: 20px auto; \n    line-height: 110%;\n}\n.description {\n    margin-top: 0px;\n    line-height: 130%;\n    text-align: left;\n}\n.link {\n    margin-top: 40px;\n    margin-left: 15px;\n    text-align: right;\n}\na {\n    text-decoration: none;\n    cursor: pointer;\n}\nh5 {\n    font-size: 20px;\n    color: rgb(1, 48, 16);\n}\na:hover {\n    text-decoration: none;\n}", ""]);
+exports.push([module.i, "h1 {\n    text-align: center;\n    margin-bottom: 40px;\n}\n\nform {\n    text-align: center;\n    width: 30%;\n    margin: 10px auto;\n}\n.row {\n    margin: 20px auto;\n}\n#img {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\nimg {\n    height: 300px;\n    width: 400px;\n}\n#content {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n.title {\n    text-align: left;\n    margin: 10px auto; \n    line-height: 110%;\n}\n.description {\n    margin-top: 0px;\n    line-height: 130%;\n    text-align: left;\n}\n.link {\n    margin-top: 40px;\n    margin-left: 15px;\n    text-align: right;\n}\na {\n    text-decoration: none;\n    cursor: pointer;\n}\nh5 {\n    font-size: 20px;\n    color: rgb(1, 48, 16);\n}\na:hover {\n    text-decoration: none;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}", ""]);
 
 // exports
 
@@ -489,7 +596,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Let's Have some News about our Environment</h1>\n\n<div *ngFor='let new of news'>\n    <div class='row' id='content'>\n        <div id='img' class='col-sm-4'>\n            <img src=\"{{new.urlToImage}}\" alt=\"News Image\">\n        </div>\n        <div id='content' class='col-sm-8'>\n            <h1 class='title'>{{new.title}}</h1>\n            <br>\n            <h3 class='description'>{{new.description}}</h3>\n            <div class='link'>\n                <a (click)=\"url(new)\" target='_'><h5>{{new.source.name}}</h5></a>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<h1>Let's Have some News about our Environment</h1>\n\n\n<form [formGroup]='newsForm' (ngSubmit)='choice(newsForm)'>\n    <div class='form-group'>\n        <label>Source</label>\n        <select name=\"choice\" formControlName='choice' class='form-control'>\n            <option value='bbc-news'>BBC News</option>\n            <option value='bloomberg'>Bloomberg</option>\n            <option value='cnn'>CNN</option>\n            <option value='fox-news'>Fox News</option>\n            <option value='national-geographic'>National Geographic</option>\n            <option value='new-scientist'>New Scientist</option>\n            <option value='the-new-york-times'>The New York Times</option>\n        </select>\n    </div>\n    <button class=\"btn btn-success\" type='submit' [disabled]='!newsForm.valid'>Submit</button>\n</form>\n\n<div *ngFor='let new of news'>\n    <div class='row' id='content'>\n        <div id='img' class='col-sm-4'>\n            <img src=\"{{new.urlToImage}}\" alt=\"News Image\">\n        </div>\n        <div id='content' class='col-sm-8'>\n            <div>\n                <h2 class='title'>{{new.title}}</h2>\n            </div>\n            <br>\n            <h4 class='description'>{{new.description}}</h4>\n            <div class='link'>\n                <a (click)=\"url(new)\" target='_'><h5>{{new.source.name}}</h5></a>\n                <button *ngIf='token | async' class='star' (click)=\"favorite(new)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class='a'>\n    <a *ngIf='token | async' (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n      "
 
 /***/ }),
 
@@ -499,7 +606,10 @@ module.exports = "<h1>Let's Have some News about our Environment</h1>\n\n<div *n
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -511,12 +621,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var HomeComponent = (function () {
-    function HomeComponent(serverService) {
+    function HomeComponent(serverService, authService) {
         this.serverService = serverService;
+        this.authService = authService;
+        this.newsForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({
+            choice: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required)
+        });
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.token = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */](function (observer) {
+            setInterval(function () {
+                observer.next(_this.authService.token);
+            }, 500);
+        });
         this.serverService.getNews().subscribe(function (data) {
             _this.news = data;
             console.log(_this.news);
@@ -524,6 +646,31 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.url = function (input) {
         window.open(input.url, '', 'width=800,height=600');
+    };
+    HomeComponent.prototype.choice = function (form) {
+        var _this = this;
+        this.serverService.getSelectedNews(form.value).subscribe(function (data) {
+            _this.news = data;
+        });
+    };
+    // success(pos) {
+    //   const crd = pos.coords;
+    //   console.log(crd);
+    //   console.log('Your current position is:');
+    //   console.log(`Latitude : ${crd.latitude}`);
+    //   console.log(`Longitude: ${crd.longitude}`);
+    //   console.log(`More or less ${crd.accuracy} meters.`);
+    //   const lat = pos.coords.latitude;
+    //   console.log(this.lat);
+    // }
+    HomeComponent.prototype.favorite = function (input) {
+        // tslint:disable-next-line:prefer-const
+        var obj = input;
+        obj['email'] = this.authService.token;
+        return this.serverService.postFavNews(input).subscribe();
+    };
+    HomeComponent.prototype.logout = function () {
+        this.authService.logOut();
     };
     return HomeComponent;
 }());
@@ -533,10 +680,10 @@ HomeComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _b || Object])
 ], HomeComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=home.component.js.map
 
 /***/ }),
@@ -549,7 +696,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n    text-align: center;\n}\n#table {\n    width: 80%;\n    margin: 20px auto;\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#agm {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    text-align: center;\n    margin-top: 40px;\n}\n#map {\n    width: 90%;\n    height: 500px;\n}\nimg {\n    height: 200px;\n    width: 200px;\n    margin: 5px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.btn {\n    margin-top: 10px;\n}", ""]);
+exports.push([module.i, "h1 {\n    text-align: center;\n}\n#table {\n    width: 85%;\n    margin: 20px auto;\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#agm {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    text-align: center;\n    margin-top: 40px;\n}\n#map {\n    width: 90%;\n    height: 500px;\n}\nimg {\n    height: 200px;\n    width: 200px;\n    margin: 5px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}", ""]);
 
 // exports
 
@@ -562,7 +709,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/info/info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Charging Station in HK</h1>\n\n<div id='agm'>\n  <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [disableDefaultUI]=\"false\" id=\"map\">\n    <agm-marker *ngFor=\"let location of locations; let i = index\" (markerClick)=\"getPic(location)\" [latitude]='location.lat' [longitude]='location.lng'>\n      <agm-info-window  class='agm-info-window-content' [isOpen]='open'>\n        <h4>\n          <strong>{{location.location}}</strong>\n        </h4>\n        <br>\n        <img [src]=\"img\">\n        <br>\n        <button class='btn btn-danger' (click)=\"more(location)\">More</button>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>\n\n<div *ngIf=\"address\">\n  <iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" [src]=\"address\" allowfullscreen></iframe>\n</div>\n\n<div id=\"table\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">Region</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations\">\n        <th scope=\"row\">{{station.districtL}}</th>\n        <td>{{station.location}}</td>\n        <td>{{station.districtS}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Location</button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
+module.exports = "<h1>Charging Station in HK</h1>\n\n<div id='agm'>\n  <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [disableDefaultUI]=\"false\" id=\"map\">\n    <agm-marker *ngFor=\"let location of locations; let i = index\" (markerClick)=\"getPic(location)\" [latitude]='location.lat' [longitude]='location.lng'>\n      <agm-info-window  class='agm-info-window-content' [isOpen]='open'>\n        <h4>\n          <strong>{{location.location}}</strong>\n        </h4>\n        <br>\n        <img [src]=\"img\">\n        <br>\n        <button class='btn btn-danger' (click)=\"more(location)\">More</button>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>\n\n<div *ngIf=\"address\">\n  <iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" [src]=\"address\" allowfullscreen></iframe>\n</div>\n\n<div id=\"table\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">Region</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n        <th scope=\"col\">Favorite</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations\">\n        <th scope=\"row\">{{station.districtL}}</th>\n        <td>{{station.location}}</td>\n        <td>{{station.districtS}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Location</button></td>\n        <td><button class='star' (click)=\"favorite(station)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
 
 /***/ }),
 
@@ -646,6 +793,12 @@ var InfoComponent = (function () {
     InfoComponent.prototype.logout = function () {
         this.authService.logOut();
     };
+    InfoComponent.prototype.favorite = function (input) {
+        // tslint:disable-next-line:prefer-const
+        var obj = input;
+        obj['email'] = this.authService.token;
+        return this.serverService.postFavChargers(obj).subscribe();
+    };
     return InfoComponent;
 }());
 InfoComponent = __decorate([
@@ -683,7 +836,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Please Sign Up or Log in</h1>\n\n<div class='row'>\n  <form [formGroup]=\"signUpForm\" (ngSubmit)='signUp(signUpForm)' class='col-sm-6 col-xs-12'>\n    <h1>Sign Up</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n      <div *ngIf=\"(signUpForm.controls['email'].hasError('pattern') || signUpForm.controls['email'].hasError('required')) && (signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)\" class=\"alert alert-info\">\n        Be aware to enter the correct pattern!\n      </div>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n      <div *ngIf=\"signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpform.controls['password'].touched)\" class='alert alert-info'>\n        Password should consist of 8 digits or characters\n      </div>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!signUpForm.valid'>\n  </form>\n\n\n  <form [formGroup]=\"logInForm\" (ngSubmit)='logIn(logInForm)' class='col-sm-6 col-xs-12'>\n    <h1>Log In</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!logInForm.valid'>\n  </form>\n</div>\n\n\n<div id=\"fb\">\n  <i (click)='signUpFacebook()' class=\"fa fa-facebook-official fa-5x\" aria-hidden=\"true\"></i>\n  <h3>You can use Facebook to log in as well!</h3>\n</div>"
+module.exports = "<h1>Please Sign Up or Log in</h1>\n\n<div class='row'>\n  <form [formGroup]=\"signUpForm\" (ngSubmit)='signUp(signUpForm)' class='col-sm-6 col-xs-12'>\n    <h1>Sign Up</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n      <div *ngIf=\"(signUpForm.controls['email'].hasError('pattern') || signUpForm.controls['email'].hasError('required')) && (signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)\"\n        class=\"alert alert-info\">\n        Be aware to enter the correct pattern!\n      </div>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n      <div *ngIf=\"signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpform.controls['password'].touched)\"\n        class='alert alert-info'>\n        Password should consist of 8 digits or characters\n      </div>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!signUpForm.valid'>\n  </form>\n\n\n  <form [formGroup]=\"logInForm\" (ngSubmit)='logIn(logInForm)' class='col-sm-6 col-xs-12'>\n    <h1>Log In</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!logInForm.valid'>\n  </form>\n</div>\n\n\n<div id=\"fb\">\n  <i (click)='signUpFacebook()' class=\"fa fa-facebook-official fa-5x\" aria-hidden=\"true\"></i>\n  <h3>You can use Facebook to log in as well!</h3>\n</div>\n"
 
 /***/ }),
 
@@ -950,7 +1103,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#button {\n    text-align: center;\n    margin: 20px auto;\n}\n#img {\n    text-align: center;\n    margin: 30px auto;\n}\n#header {\n    text-align: center;\n}\ntable {\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#table {\n    width: 80%;\n    margin: 20px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}", ""]);
+exports.push([module.i, "#button {\n    text-align: center;\n    margin: 20px auto;\n}\n#img {\n    text-align: center;\n    margin: 30px auto;\n}\n#header {\n    text-align: center;\n}\ntable {\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#table {\n    width: 80%;\n    margin: 20px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}", ""]);
 
 // exports
 
@@ -963,7 +1116,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/point/point.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"header\">\n  <h1>Find your nearest Charging Station</h1>\n</div>\n\n<div id=\"img\">\n  <img src=\"../../assets/charginstation.JPG\" alt=\"Charging Station\">\n</div>\n\n<div id=\"button\">\n  <button class='btn btn-danger' [disabled]=\"!(lat && lng)\" (click)=\"getStation()\">Nearest Charging station</button>\n</div>\n\n<div id=\"table\" *ngIf=\"stations\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n        <th scope=\"col\">Distance (km)</th>\n        <th scope=\"col\">Direction</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations\">\n        <th scope=\"row\">{{station.districtS}}</th>\n        <td>{{station.name}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo || Unknown}}</td>\n        <td>{{station.address}}</td>\n        <td>{{station.distance}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Let's Go</button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
+module.exports = "<div id=\"header\">\n  <h1>Find your nearest Charging Station</h1>\n</div>\n\n<div id=\"img\">\n  <img src=\"../../assets/charginstation.JPG\" alt=\"Charging Station\">\n</div>\n\n<div id=\"button\">\n  <button class='btn btn-danger' [disabled]=\"!(lat && lng)\" (click)=\"getStation()\">Nearest Charging station</button>\n</div>\n\n<div id=\"table\" *ngIf=\"stations\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n        <th scope=\"col\">Distance (km)</th>\n        <th scope=\"col\">Direction</th>\n        <th scope=\"col\">Favorite</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations\">\n        <th scope=\"row\">{{station.districtS}}</th>\n        <td>{{station.name}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo || Unknown}}</td>\n        <td>{{station.address}}</td>\n        <td>{{station.distance}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Let's Go</button></td>\n        <td><button class='star' (click)=\"favorite(station)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
 
 /***/ }),
 
@@ -974,6 +1127,7 @@ module.exports = "<div id=\"header\">\n  <h1>Find your nearest Charging Station<
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PointComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -985,9 +1139,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PointComponent = (function () {
-    function PointComponent(serverService) {
+    function PointComponent(serverService, authService) {
         this.serverService = serverService;
+        this.authService = authService;
         this.options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -1017,6 +1173,15 @@ var PointComponent = (function () {
         console.log(input);
         window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
     };
+    PointComponent.prototype.logout = function () {
+        this.authService.logOut();
+    };
+    PointComponent.prototype.favorite = function (input) {
+        // tslint:disable-next-line:prefer-const
+        var obj = input;
+        obj['email'] = this.authService.token;
+        return this.serverService.postFavChargers(obj).subscribe();
+    };
     return PointComponent;
 }());
 PointComponent = __decorate([
@@ -1025,10 +1190,10 @@ PointComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/point/point.component.html"),
         styles: [__webpack_require__("../../../../../src/app/point/point.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */]) === "function" && _b || Object])
 ], PointComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=point.component.js.map
 
 /***/ }),
@@ -1041,7 +1206,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#button {\n    text-align: center;\n    margin: 20px auto;\n}\n#img {\n    text-align: center;\n    margin: 30px auto;\n}\n#header {\n    text-align: center;\n}\ntable {\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#table {\n    width: 85%;\n    margin: 20px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}", ""]);
+exports.push([module.i, "#button {\n    text-align: center;\n    margin: 20px auto;\n}\n#img {\n    text-align: center;\n    margin: 30px auto;\n}\n#header {\n    text-align: center;\n}\ntable {\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#table {\n    width: 85%;\n    margin: 20px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}", ""]);
 
 // exports
 
@@ -1054,7 +1219,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/recycle/recycle.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"header\">\n    <h1>Find your nearest Recycling Bin</h1>\n  </div>\n  \n  <div id=\"img\">\n    <img src=\"../../assets/recyclingBin.JPG\" alt=\"Recycling Bin\">\n  </div>\n  \n  <div id=\"button\">\n    <button class='btn btn-danger' [disabled]=\"!(lat && lng)\" (click)=\"getBin()\">Nearest Recycling Bin</button>\n  </div>\n  \n  <div id=\"table\" *ngIf=\"bins\">\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th scope=\"col\">District</th>\n          <th scope=\"col\">Place</th>\n          <th scope=\"col\">Waste Type</th>\n          <th scope=\"col\">Distance (km)</th>\n          <th scope=\"col\">Direction</th>\n          <th scope=\"col\">Street View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let bin of bins\">\n          <th scope=\"row\">{{bin.district}}</th>\n          <td>{{bin.location}}</td>\n          <td>{{bin.wasteType}}</td>\n          <td>{{bin.distance}}</td>\n          <td><button class=\"btn btn-info\" (click)=\"loc(bin)\">Let's Go</button></td>\n          <td><button class=\"btn btn-info\" (click)=\"view(bin)\">Check</button></td>\n        </tr>\n      </tbody>\n    </table>\n  \n  </div>\n  \n  \n  <div class='a'>\n    <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n  </div>\n  "
+module.exports = "<div id=\"header\">\n    <h1>Find your nearest Recycling Bin</h1>\n  </div>\n  \n  <div id=\"img\">\n    <img src=\"../../assets/recyclingBin.JPG\" alt=\"Recycling Bin\">\n  </div>\n  \n  <div id=\"button\">\n    <button class='btn btn-danger' [disabled]=\"!(lat && lng)\" (click)=\"getBin()\">Nearest Recycling Bin</button>\n  </div>\n  \n  <div id=\"table\" *ngIf=\"bins\">\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th scope=\"col\">District</th>\n          <th scope=\"col\">Place</th>\n          <th scope=\"col\">Waste Type</th>\n          <th scope=\"col\">Distance (km)</th>\n          <th scope=\"col\">Direction</th>\n          <th scope=\"col\">Street View</th>\n          <th scope=\"col\">Favorite</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let bin of bins\">\n          <th scope=\"row\">{{bin.district}}</th>\n          <td>{{bin.location}}</td>\n          <td>{{bin.wasteType}}</td>\n          <td>{{bin.distance}}</td>\n          <td><button class=\"btn btn-info\" (click)=\"loc(bin)\">Let's Go</button></td>\n          <td><button class=\"btn btn-info\" (click)=\"view(bin)\">Check</button></td>\n          <td><button class='star' (click)=\"favorite(bin)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button></td>\n        </tr>\n      </tbody>\n    </table>\n  \n  </div>\n  \n  \n  <div class='a'>\n    <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n  </div>\n  "
 
 /***/ }),
 
@@ -1103,6 +1268,7 @@ var RecycleComponent = (function () {
     RecycleComponent.prototype.getBin = function () {
         var _this = this;
         this.serverService.getBin({ lat: this.lat, lng: this.lng }).subscribe(function (data) {
+            console.log(data);
             _this.bins = data;
             console.log(data);
         });
@@ -1124,6 +1290,12 @@ var RecycleComponent = (function () {
     };
     RecycleComponent.prototype.logout = function () {
         this.authService.logOut();
+    };
+    RecycleComponent.prototype.favorite = function (input) {
+        // tslint:disable-next-line:prefer-const
+        var obj = input;
+        obj['email'] = this.authService.token;
+        return this.serverService.postFavBins(obj).subscribe();
     };
     return RecycleComponent;
 }());
@@ -1178,6 +1350,28 @@ var ServerService = (function () {
     };
     ServerService.prototype.getNews = function () {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/news').map(function (res) { return res.json(); });
+    };
+    ServerService.prototype.getSelectedNews = function (source) {
+        console.log(source);
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/selected_news', source).map(function (res) { return res.json(); });
+    };
+    ServerService.prototype.postFavChargers = function (chargers) {
+        return this.http.post('https://finalprojectstations.firebaseio.com/.json', chargers);
+    };
+    ServerService.prototype.getFavChargers = function () {
+        return this.http.get('https://finalprojectstations.firebaseio.com/.json');
+    };
+    ServerService.prototype.postFavBins = function (bins) {
+        return this.http.post('https://finalproject-d3288.firebaseio.com/.json', bins);
+    };
+    ServerService.prototype.getFavBins = function () {
+        return this.http.get('https://finalproject-d3288.firebaseio.com/.json');
+    };
+    ServerService.prototype.postFavNews = function (news) {
+        return this.http.post('https://finalprojectnews.firebaseio.com/.json', news);
+    };
+    ServerService.prototype.getFavNews = function () {
+        return this.http.get('https://finalprojectnews.firebaseio.com/.json');
     };
     return ServerService;
 }());
