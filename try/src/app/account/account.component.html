@@ -3,7 +3,7 @@
   <div class='col-sm-4' id='info'>
     
     <div id='pro'>
-      <img src="../../assets/GreenFace.png" id='propic'>
+      <img *ngIf='!fbprofile' src="../../assets/GreenFace.png" id='propic'>
       <form *ngIf='!fbprofile && !profile' [formGroup]='personalForm' (ngSubmit)='form(personalForm)'>
         <h3>Personal Data</h3>
         <div class='form-group'>
