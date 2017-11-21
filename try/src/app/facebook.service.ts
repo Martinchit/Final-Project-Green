@@ -21,7 +21,6 @@ export class FacebookService implements OnInit {
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
-      console.log(user);
       this.user = user;
     });
     this.router.navigate(['/account']);

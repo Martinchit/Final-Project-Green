@@ -579,7 +579,6 @@ var FacebookService = (function () {
         var _this = this;
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_angular4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
         this.authService.authState.subscribe(function (user) {
-            console.log(user);
             _this.user = user;
         });
         this.router.navigate(['/account']);
