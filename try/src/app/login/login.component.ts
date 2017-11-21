@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AUTHService } from '../auth.service';
 import { FacebookService } from '../facebook.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +21,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl(null, Validators.required)
   });
 
-  constructor(private authService: AUTHService, private facebookService: FacebookService) { }
+  constructor(private authService: AUTHService, private facebookService: FacebookService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.facebookService.isAuthenicated());
-    console.log(this.facebookService.user);
+    if (this.authService.token || this.facebookService.user) {
+      this.router.navigate(['/account']);
+    }
   }
 
   signUp(form: any) {

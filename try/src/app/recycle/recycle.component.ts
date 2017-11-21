@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
 import { Router } from '@angular/router';
 import { AUTHService } from '../auth.service';
+import { FacebookService } from '../facebook.service';
+
 
 @Component({
   selector: 'app-recycle',
@@ -20,7 +22,8 @@ export class RecycleComponent implements OnInit {
     maximumAge: 0
   };
 
-  constructor(private serverService: ServerService, private router: Router, private authService: AUTHService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private serverService: ServerService, private router: Router, private authService: AUTHService, private facebookService: FacebookService) { }
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -33,9 +36,7 @@ export class RecycleComponent implements OnInit {
 
   getBin() {
     this.serverService.getBin({lat: this.lat, lng: this.lng}).subscribe((data) => {
-      console.log(data);
       this.bins = data;
-      console.log(data);
     });
   }
 
@@ -46,7 +47,6 @@ export class RecycleComponent implements OnInit {
   }
 
   loc(input: any) {
-    console.log(input);
     window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
   }
 
@@ -60,12 +60,14 @@ export class RecycleComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
+    this.facebookService.signOut();
   }
 
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
+    const ref = this.authService.token || this.facebookService.user.id;
     let obj = input;
-    obj['email'] = this.authService.token;
+    obj['id'] = ref;
     return this.serverService.postFavBins(obj).subscribe();
   }
 

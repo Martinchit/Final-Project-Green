@@ -2,6 +2,24 @@
 
   <div class='col-sm-4' id='info'>
     
+    <div id='pro'>
+      <img src="../../assets/GreenFace.png" id='propic'>
+      <form *ngIf='!fbprofile && !profile' [formGroup]='personalForm' (ngSubmit)='form(personalForm)'>
+        <h3>Personal Data</h3>
+        <div class='form-group'>
+          <label>Name</label>
+          <input type="text" class='formControl' name='name' formControlName='name'>
+        </div>
+        <input type="submit" class='btn btn-success' value='submit' [disabled]='!personalForm.valid'>
+      </form>
+      <h3 *ngIf='profile'>{{profile}}</h3>
+
+    </div>
+
+    <div *ngIf='fbprofile' id='pro'>
+      <img src="{{fbprofile.photoUrl}}" id='propic'>
+      <h3>{{fbprofile.name}}</h3>
+    </div>
 
   </div>
 

@@ -21,18 +21,19 @@ export class FacebookService implements OnInit {
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
+      console.log(user);
       this.user = user;
     });
     this.router.navigate(['/account']);
   }
 
   signOut(): void {
+    this.user = null;
     this.authService.signOut();
-    this.user = undefined;
   }
 
   isAuthenicated() {
-    return this.user !== undefined;
+    return this.user != undefined;
   }
 
 }

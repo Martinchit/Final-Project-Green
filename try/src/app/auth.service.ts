@@ -12,7 +12,6 @@ export class AUTHService {
 
   signUp(input: any) {
     return this.http.post(environment.hostName + '/api/signUp', input).subscribe((res) => {
-      console.log(res.json());
       this.token = res.json();
       this.router.navigate(['/account']);
     }, (err) => {
@@ -22,7 +21,6 @@ export class AUTHService {
 
   logIn(input: any) {
     return this.http.post(environment.hostName + '/api/logIn', input).subscribe((res) => {
-      console.log(res.json());
       this.token = res.json();
       this.router.navigate(['/account']);
     }, (err) => {

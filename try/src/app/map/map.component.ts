@@ -6,6 +6,7 @@ import { Station } from '../station.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AUTHService } from '../auth.service';
+import { FacebookService } from '../facebook.service';
 
 @Component({
   selector: 'app-map',
@@ -31,7 +32,7 @@ export class MapComponent implements OnInit {
   // zoom = 16;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private serverService: ServerService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private authService: AUTHService) { }
+  constructor(private serverService: ServerService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private authService: AUTHService, private facebookService: FacebookService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -75,6 +76,7 @@ export class MapComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
+    this.facebookService.signOut();
   }
 
 }

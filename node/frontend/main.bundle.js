@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1, h2, h3 {\n    margin-top: 0px; \n}\n\n#profile {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\nh1 {\n    text-align: center;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n#button {\n    text-align: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    margin-bottom: 20px;\n}\n.i {\n    background: none;\n    border: none;\n}\n#favorite {\n    margin-top: 10px;\n}\n#box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    margin-bottom: 15px;\n}\n#binButtons {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    margin-bottom: 10px;\n}\n.btn {\n    margin-right: 10px;\n}\n.chargerDetails {\n    margin-left: 8px;\n}", ""]);
+exports.push([module.i, "h1, h2, h3 {\n    margin-top: 0px; \n}\n#pro h3 {\n    margin: 20px auto;\n}\n#profile {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\nh1 {\n    text-align: center;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n#button {\n    text-align: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    margin-bottom: 20px;\n}\n.i {\n    background: none;\n    border: none;\n}\n#info {\n    margin-top: 10px;\n}\n#box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    margin-bottom: 15px;\n}\n#binButtons {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    margin-bottom: 10px;\n}\n.btn {\n    margin-right: 10px;\n}\n.chargerDetails {\n    margin-left: 8px;\n}\n#pro {\n    margin: auto auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center\n}\n#propic {\n    height: 180px;\n    width: 180px;\n}", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/account/account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id='profile' class='row'>\n\n  <div class='col-sm-4' id='info'>\n    \n\n  </div>\n\n  <div class='col-sm-8' id='favorite'>\n    <div id='button'>\n      <button class='i' (click)='getNews()'><i class=\"fa fa-newspaper-o fa-4x\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getChargers()'><i class=\"fa fa-4x fa-battery-full\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getBins()'><i class=\"fa fa-4x fa-trash\" aria-hidden=\"true\"></i></button>\n    </div>\n\n    <div *ngIf='news' id='items'>\n      <div *ngFor='let new of news' id='box'>\n        <div><img src=\"{{new.urlToImage}}\" alt=\"News Image\" style='height: 210px; width: 300px;'></div>\n        <div class='chargerDetails'>\n          <h3>News Title:</h3>\n          <h5>{{new.title}} <button class='i' (click)=\"url(new)\"><i class=\"fa fa-link\" aria-hidden=\"true\"></i></button></h5>\n          <h3>News Description:</h3>\n          <h5>{{new.description}}</h5>\n          <h3>News Author:</h3>\n          <h5>{{new.author}}</h5>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='chargers' id='items'>\n      <div *ngFor='let charger of chargers'>\n        <div class='binDetails'>\n          <h3>Parking: {{charger.location}}</h3>\n          <h3>Address: {{charger.address}}</h3>\n          <h3>Provider: {{charger.provider}}</h3>\n          <h3>Parking No.: {{charger.parkingNo}}</h3>\n          <div id='binButtons'>\n            <td><button class=\"btn btn-info\" (click)=\"loc(charger)\">Location</button></td>\n            <td><button class=\"btn btn-info\" (click)=\"view(charger)\">Street View</button></td>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='bins' id='items'>\n      <div *ngFor='let bin of bins'>\n          <div class='binDetails'>\n            <h3>Location:</h3>\n            <h3>{{bin.location}}</h3>\n            <h3>Waste Type: {{bin.wasteType}}</h3>\n            <div id='binButtons'>\n              <td><button class=\"btn btn-info\" (click)=\"loc(bin)\">Location</button></td>\n              <td><button class=\"btn btn-info\" (click)=\"view(bin)\">Street View</button></td>\n            </div>\n      </div>\n    </div>\n\n  </div>\n\n</div>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
+module.exports = "<div id='profile' class='row'>\n\n  <div class='col-sm-4' id='info'>\n    \n    <div id='pro'>\n      <img src=\"../../assets/GreenFace.png\" id='propic'>\n      <form *ngIf='!fbprofile && !profile' [formGroup]='personalForm' (ngSubmit)='form(personalForm)'>\n        <h3>Personal Data</h3>\n        <div class='form-group'>\n          <label>Name</label>\n          <input type=\"text\" class='formControl' name='name' formControlName='name'>\n        </div>\n        <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!personalForm.valid'>\n      </form>\n      <h3 *ngIf='profile'>{{profile}}</h3>\n\n    </div>\n\n    <div *ngIf='fbprofile' id='pro'>\n      <img src=\"{{fbprofile.photoUrl}}\" id='propic'>\n      <h3>{{fbprofile.name}}</h3>\n    </div>\n\n  </div>\n\n  <div class='col-sm-8' id='favorite'>\n    <div id='button'>\n      <button class='i' (click)='getNews()'><i class=\"fa fa-newspaper-o fa-4x\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getChargers()'><i class=\"fa fa-4x fa-battery-full\" aria-hidden=\"true\"></i></button>\n      <button class='i' (click)='getBins()'><i class=\"fa fa-4x fa-trash\" aria-hidden=\"true\"></i></button>\n    </div>\n\n    <div *ngIf='news' id='items'>\n      <div *ngFor='let new of news' id='box'>\n        <div><img src=\"{{new.urlToImage}}\" alt=\"News Image\" style='height: 210px; width: 300px;'></div>\n        <div class='chargerDetails'>\n          <h3>News Title:</h3>\n          <h5>{{new.title}} <button class='i' (click)=\"url(new)\"><i class=\"fa fa-link\" aria-hidden=\"true\"></i></button></h5>\n          <h3>News Description:</h3>\n          <h5>{{new.description}}</h5>\n          <h3>News Author:</h3>\n          <h5>{{new.author}}</h5>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='chargers' id='items'>\n      <div *ngFor='let charger of chargers'>\n        <div class='binDetails'>\n          <h3>Parking: {{charger.location}}</h3>\n          <h3>Address: {{charger.address}}</h3>\n          <h3>Provider: {{charger.provider}}</h3>\n          <h3>Parking No.: {{charger.parkingNo}}</h3>\n          <div id='binButtons'>\n            <td><button class=\"btn btn-info\" (click)=\"loc(charger)\">Location</button></td>\n            <td><button class=\"btn btn-info\" (click)=\"view(charger)\">Street View</button></td>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf='bins' id='items'>\n      <div *ngFor='let bin of bins'>\n          <div class='binDetails'>\n            <h3>Location:</h3>\n            <h3>{{bin.location}}</h3>\n            <h3>Waste Type: {{bin.wasteType}}</h3>\n            <div id='binButtons'>\n              <td><button class=\"btn btn-info\" (click)=\"loc(bin)\">Location</button></td>\n              <td><button class=\"btn btn-info\" (click)=\"view(bin)\">Street View</button></td>\n            </div>\n      </div>\n    </div>\n\n  </div>\n\n</div>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
 
 /***/ }),
 
@@ -51,6 +51,8 @@ module.exports = "<div id='profile' class='row'>\n\n  <div class='col-sm-4' id='
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,19 +66,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AccountComponent = (function () {
-    function AccountComponent(serverService, router, authService) {
+    // tslint:disable-next-line:max-line-length
+    function AccountComponent(serverService, router, authService, facebookService) {
         this.serverService = serverService;
         this.router = router;
         this.authService = authService;
+        this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
         };
+        this.personalForm = new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormGroup */]({
+            name: new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* Validators */].required)
+        });
     }
     AccountComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (this.facebookService.user) {
+            this.fbprofile = this.facebookService.user;
+        }
+        this.serverService.getName().subscribe(function (data) {
+            if (JSON.parse(data['_body']) == undefined) {
+                return false;
+            }
+            var ref = Object.values(JSON.parse(data['_body']));
+            ref.forEach(function (name) {
+                if (name.id === _this.authService.token) {
+                    _this.profile = name.name;
+                }
+            });
+        });
         this.news = [];
         navigator.geolocation.getCurrentPosition(function (pos) {
             _this.lat = pos.coords.latitude;
@@ -87,8 +110,9 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
+            var ticket = _this.authService.token || _this.facebookService.user.id;
             ref.forEach(function (news) {
-                if (news.email === _this.authService.token) {
+                if (news.id === ticket) {
                     _this.news.push(news);
                 }
             });
@@ -108,8 +132,9 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
+            var ticket = _this.authService.token || _this.facebookService.user.id;
             ref.forEach(function (news) {
-                if (news.email === _this.authService.token) {
+                if (news.id === ticket) {
                     _this.news.push(news);
                 }
             });
@@ -128,8 +153,9 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
+            var ticket = _this.authService.token || _this.facebookService.user.id;
             ref.forEach(function (charger) {
-                if (charger.email === _this.authService.token) {
+                if (charger.id === ticket) {
                     _this.chargers.push(charger);
                 }
             });
@@ -145,15 +171,15 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
+            var ticket = _this.authService.token || _this.facebookService.user.id;
             ref.forEach(function (bin) {
-                if (bin.email === _this.authService.token) {
+                if (bin.id === ticket) {
                     _this.bins.push(bin);
                 }
             });
         });
     };
     AccountComponent.prototype.loc = function (input) {
-        console.log(input);
         window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
     };
     AccountComponent.prototype.view = function (input) {
@@ -165,6 +191,12 @@ var AccountComponent = (function () {
     };
     AccountComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
+    };
+    AccountComponent.prototype.form = function (form) {
+        this.serverService.postName({ name: form.value.name, id: this.authService.token }).subscribe();
+        this.profile = form.value.name;
+        form.reset();
     };
     return AccountComponent;
 }());
@@ -174,10 +206,10 @@ AccountComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/account/account.component.html"),
         styles: [__webpack_require__("../../../../../src/app/account/account.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__facebook_service__["a" /* FacebookService */]) === "function" && _d || Object])
 ], AccountComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=account.component.js.map
 
 /***/ }),
@@ -426,9 +458,6 @@ var AuthGuardService = (function () {
         this.facebookService = facebookService;
     }
     AuthGuardService.prototype.canActivate = function (route, state) {
-        console.log(this.authService.token);
-        console.log(this.authService.isAuthenicated());
-        console.log(this.facebookService.isAuthenicated());
         if (this.authService.isAuthenicated() || this.facebookService.isAuthenicated()) {
             return true;
         }
@@ -480,7 +509,6 @@ var AUTHService = (function () {
     AUTHService.prototype.signUp = function (input) {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
-            console.log(res.json());
             _this.token = res.json();
             _this.router.navigate(['/account']);
         }, function (err) {
@@ -490,7 +518,6 @@ var AUTHService = (function () {
     AUTHService.prototype.logIn = function (input) {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/logIn', input).subscribe(function (res) {
-            console.log(res.json());
             _this.token = res.json();
             _this.router.navigate(['/account']);
         }, function (err) {
@@ -552,16 +579,17 @@ var FacebookService = (function () {
         var _this = this;
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_angular4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
         this.authService.authState.subscribe(function (user) {
+            console.log(user);
             _this.user = user;
         });
         this.router.navigate(['/account']);
     };
     FacebookService.prototype.signOut = function () {
+        this.user = null;
         this.authService.signOut();
-        this.user = undefined;
     };
     FacebookService.prototype.isAuthenicated = function () {
-        return this.user !== undefined;
+        return this.user != undefined;
     };
     return FacebookService;
 }());
@@ -610,6 +638,7 @@ module.exports = "<h1>Let's Have some News about our Environment</h1>\n\n\n<form
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -624,10 +653,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = (function () {
-    function HomeComponent(serverService, authService) {
+    function HomeComponent(serverService, authService, facebookService) {
         this.serverService = serverService;
         this.authService = authService;
+        this.facebookService = facebookService;
         this.newsForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({
             choice: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required)
         });
@@ -636,12 +667,12 @@ var HomeComponent = (function () {
         var _this = this;
         this.token = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */](function (observer) {
             setInterval(function () {
-                observer.next(_this.authService.token);
+                var ref = _this.authService.token || _this.facebookService.user;
+                observer.next(ref);
             }, 500);
         });
         this.serverService.getNews().subscribe(function (data) {
             _this.news = data;
-            console.log(_this.news);
         });
     };
     HomeComponent.prototype.url = function (input) {
@@ -665,12 +696,14 @@ var HomeComponent = (function () {
     // }
     HomeComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
+        var ref = this.authService.token || this.facebookService.user.id;
         var obj = input;
-        obj['email'] = this.authService.token;
+        obj['id'] = ref;
         return this.serverService.postFavNews(input).subscribe();
     };
     HomeComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
     };
     return HomeComponent;
 }());
@@ -680,10 +713,10 @@ HomeComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */]) === "function" && _c || Object])
 ], HomeComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=home.component.js.map
 
 /***/ }),
@@ -723,6 +756,7 @@ module.exports = "<h1>Charging Station in HK</h1>\n\n<div id='agm'>\n  <agm-map 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -737,13 +771,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var InfoComponent = (function () {
     // tslint:disable-next-line:max-line-length
-    function InfoComponent(serverService, router, sanitizer, authService) {
+    function InfoComponent(serverService, router, sanitizer, authService, facebookService) {
         this.serverService = serverService;
         this.router = router;
         this.sanitizer = sanitizer;
         this.authService = authService;
+        this.facebookService = facebookService;
         this.stations = [];
         this.infoWindowOpened = null;
         this.locations = [];
@@ -792,11 +828,13 @@ var InfoComponent = (function () {
     };
     InfoComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
     };
     InfoComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
+        var ref = this.authService.token || this.facebookService.user.id;
         var obj = input;
-        obj['email'] = this.authService.token;
+        obj['id'] = ref;
         return this.serverService.postFavChargers(obj).subscribe();
     };
     return InfoComponent;
@@ -807,10 +845,10 @@ InfoComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/info/info.component.html"),
         styles: [__webpack_require__("../../../../../src/app/info/info.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */]) === "function" && _e || Object])
 ], InfoComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=info.component.js.map
 
 /***/ }),
@@ -849,6 +887,7 @@ module.exports = "<h1>Please Sign Up or Log in</h1>\n\n<div class='row'>\n  <for
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -862,10 +901,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = (function () {
-    function LoginComponent(authService, facebookService) {
+    function LoginComponent(authService, facebookService, router) {
         this.authService = authService;
         this.facebookService = facebookService;
+        this.router = router;
         this.signUpForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
             email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
             password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern('[a-zA-Z0-9]{6,}')])
@@ -876,8 +917,9 @@ var LoginComponent = (function () {
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
-        console.log(this.facebookService.isAuthenicated());
-        console.log(this.facebookService.user);
+        if (this.authService.token || this.facebookService.user) {
+            this.router.navigate(['/account']);
+        }
     };
     LoginComponent.prototype.signUp = function (form) {
         var obj = { email: form.value.email, password: form.value.password };
@@ -900,10 +942,10 @@ LoginComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], LoginComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=login.component.js.map
 
 /***/ }),
@@ -943,6 +985,7 @@ module.exports = "<h1>Google Street View</h1>\n<h2>{{location.location}}</h2>\n\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -952,6 +995,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -967,12 +1011,13 @@ var MapComponent = (function () {
     // lng = 114.15769;
     // zoom = 16;
     // tslint:disable-next-line:max-line-length
-    function MapComponent(serverService, sanitizer, route, router, authService) {
+    function MapComponent(serverService, sanitizer, route, router, authService, facebookService) {
         this.serverService = serverService;
         this.sanitizer = sanitizer;
         this.route = route;
         this.router = router;
         this.authService = authService;
+        this.facebookService = facebookService;
     }
     MapComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1013,6 +1058,7 @@ var MapComponent = (function () {
     // }
     MapComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
     };
     return MapComponent;
 }());
@@ -1022,10 +1068,10 @@ MapComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/map/map.component.html"),
         styles: [__webpack_require__("../../../../../src/app/map/map.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AUTHService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__facebook_service__["a" /* FacebookService */]) === "function" && _f || Object])
 ], MapComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=map.component.js.map
 
 /***/ }),
@@ -1128,6 +1174,7 @@ module.exports = "<div id=\"header\">\n  <h1>Find your nearest Charging Station<
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1140,10 +1187,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PointComponent = (function () {
-    function PointComponent(serverService, authService) {
+    function PointComponent(serverService, authService, facebookService) {
         this.serverService = serverService;
         this.authService = authService;
+        this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -1170,16 +1219,17 @@ var PointComponent = (function () {
         });
     };
     PointComponent.prototype.loc = function (input) {
-        console.log(input);
         window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
     };
     PointComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
     };
     PointComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
+        var ref = this.authService.token || this.facebookService.user.id;
         var obj = input;
-        obj['email'] = this.authService.token;
+        obj['id'] = ref;
         return this.serverService.postFavChargers(obj).subscribe();
     };
     return PointComponent;
@@ -1190,10 +1240,10 @@ PointComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/point/point.component.html"),
         styles: [__webpack_require__("../../../../../src/app/point/point.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AUTHService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__facebook_service__["a" /* FacebookService */]) === "function" && _c || Object])
 ], PointComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=point.component.js.map
 
 /***/ }),
@@ -1232,6 +1282,7 @@ module.exports = "<div id=\"header\">\n    <h1>Find your nearest Recycling Bin</
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__server_service__ = __webpack_require__("../../../../../src/app/server.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1245,11 +1296,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RecycleComponent = (function () {
-    function RecycleComponent(serverService, router, authService) {
+    // tslint:disable-next-line:max-line-length
+    function RecycleComponent(serverService, router, authService, facebookService) {
         this.serverService = serverService;
         this.router = router;
         this.authService = authService;
+        this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -1268,9 +1322,7 @@ var RecycleComponent = (function () {
     RecycleComponent.prototype.getBin = function () {
         var _this = this;
         this.serverService.getBin({ lat: this.lat, lng: this.lng }).subscribe(function (data) {
-            console.log(data);
             _this.bins = data;
-            console.log(data);
         });
     };
     RecycleComponent.prototype.error = function (err) {
@@ -1278,7 +1330,6 @@ var RecycleComponent = (function () {
         window.location.reload(true);
     };
     RecycleComponent.prototype.loc = function (input) {
-        console.log(input);
         window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
     };
     RecycleComponent.prototype.view = function (input) {
@@ -1290,11 +1341,13 @@ var RecycleComponent = (function () {
     };
     RecycleComponent.prototype.logout = function () {
         this.authService.logOut();
+        this.facebookService.signOut();
     };
     RecycleComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
+        var ref = this.authService.token || this.facebookService.user.id;
         var obj = input;
-        obj['email'] = this.authService.token;
+        obj['id'] = ref;
         return this.serverService.postFavBins(obj).subscribe();
     };
     return RecycleComponent;
@@ -1305,10 +1358,10 @@ RecycleComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/recycle/recycle.component.html"),
         styles: [__webpack_require__("../../../../../src/app/recycle/recycle.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__server_service__["a" /* ServerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AUTHService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__facebook_service__["a" /* FacebookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__facebook_service__["a" /* FacebookService */]) === "function" && _d || Object])
 ], RecycleComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=recycle.component.js.map
 
 /***/ }),
@@ -1372,6 +1425,12 @@ var ServerService = (function () {
     };
     ServerService.prototype.getFavNews = function () {
         return this.http.get('https://finalprojectnews.firebaseio.com/.json');
+    };
+    ServerService.prototype.getName = function () {
+        return this.http.get('https://finalprojectname.firebaseio.com/.json');
+    };
+    ServerService.prototype.postName = function (name) {
+        return this.http.post('https://finalprojectname.firebaseio.com/.json', name);
     };
     return ServerService;
 }());

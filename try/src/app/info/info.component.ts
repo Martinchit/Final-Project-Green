@@ -6,6 +6,7 @@ import { Location } from '../location.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'angular4-social-login/auth.service';
 import { AUTHService } from '../auth.service';
+import { FacebookService } from '../facebook.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class InfoComponent implements OnInit {
   zoom = 16;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private serverService: ServerService, private router: Router, private sanitizer: DomSanitizer, private authService: AUTHService) {}
+  constructor(private serverService: ServerService, private router: Router, private sanitizer: DomSanitizer, private authService: AUTHService, private facebookService: FacebookService) {}
 
   ngOnInit() {
     this.serverService.getInfo().subscribe((data) => {
@@ -75,12 +76,14 @@ export class InfoComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
+    this.facebookService.signOut();
   }
 
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
+    const ref = this.authService.token || this.facebookService.user.id;
     let obj = input;
-    obj['email'] = this.authService.token;
+    obj['id'] = ref;
     return this.serverService.postFavChargers(obj).subscribe();
   }
 }

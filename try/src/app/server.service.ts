@@ -52,4 +52,10 @@ export class ServerService {
   getFavNews() {
     return this.http.get('https://finalprojectnews.firebaseio.com/.json');
   }
+  getName() {
+    return this.http.get('https://finalprojectname.firebaseio.com/.json');
+  }
+  postName(name: any) {
+    return this.http.post('https://finalprojectname.firebaseio.com/.json', name);
+  }
 }

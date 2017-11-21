@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
 import { AUTHService } from '../auth.service';
+import { FacebookService } from '../facebook.service';
 
 @Component({
   selector: 'app-point',
@@ -20,7 +21,7 @@ export class PointComponent implements OnInit {
     maximumAge: 0
   };
 
-  constructor(private serverService: ServerService, private authService: AUTHService) { }
+  constructor(private serverService: ServerService, private authService: AUTHService, private facebookService: FacebookService) { }
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -43,17 +44,18 @@ export class PointComponent implements OnInit {
   }
 
   loc(input: any) {
-    console.log(input);
     window.open('https://www.google.com.hk/maps/dir/' + this.lat + ',' + this.lng + '/' + input.lat + ',' + input.lng);
   }
 
   logout() {
     this.authService.logOut();
+    this.facebookService.signOut();
   }
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
+    const ref = this.authService.token || this.facebookService.user.id;
     let obj = input;
-    obj['email'] = this.authService.token;
+    obj['id'] = ref;
     return this.serverService.postFavChargers(obj).subscribe();
   }
 }

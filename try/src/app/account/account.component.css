@@ -1,7 +1,9 @@
 h1, h2, h3 {
     margin-top: 0px; 
 }
-
+#pro h3 {
+    margin: 20px auto;
+}
 #profile {
     display: flex;
     justify-content: center;
@@ -24,7 +26,7 @@ h1 {
     background: none;
     border: none;
 }
-#favorite {
+#info {
     margin-top: 10px;
 }
 #box {
@@ -42,4 +44,15 @@ h1 {
 }
 .chargerDetails {
     margin-left: 8px;
+}
+#pro {
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+}
+#propic {
+    height: 180px;
+    width: 180px;
 }

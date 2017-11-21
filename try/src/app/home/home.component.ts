@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ServerService } from '../server.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AUTHService } from '../auth.service';
+import { FacebookService } from '../facebook.service';
 
 
 @Component({
@@ -19,19 +20,19 @@ export class HomeComponent implements OnInit {
   });
 
 
-  constructor(private serverService: ServerService, private authService: AUTHService) { }
+  constructor(private serverService: ServerService, private authService: AUTHService, private facebookService: FacebookService) { }
 
   news: any;
 
   ngOnInit() {
     this.token = new Observable((observer) => {
       setInterval(() => {
-        observer.next(this.authService.token);
+        const ref = this.authService.token || this.facebookService.user;
+        observer.next(ref);
       }, 500);
     });
     this.serverService.getNews().subscribe((data) => {
       this.news = data;
-      console.log(this.news);
     });
   }
 
@@ -58,13 +59,15 @@ export class HomeComponent implements OnInit {
 
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
+    let ref = this.authService.token || this.facebookService.user.id;
     let obj = input;
-    obj['email'] = this.authService.token;
+    obj['id'] = ref;
     return this.serverService.postFavNews(input).subscribe();
   }
 
   logout() {
     this.authService.logOut();
+    this.facebookService.signOut();
   }
 
 }
