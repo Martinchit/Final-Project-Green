@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "MartinChin",
-    "password": "password",
-    "database": "Final Project",
-    "host": "127.0.0.1",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres",
+    "host": "",
     "dialect": "postgres"
   },
   "test": {
-    "username": "MartinChin",
-    "password": "password",
-    "database": "Final Project",
-    "host": "127.0.0.1",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres",
+    "host": "",
     "dialect": "postgres"
   },
   "production": {
-    "username": "MartinChin",
-    "password": "password",
-    "database": "Final Project",
-    "host": "127.0.0.1",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres",
+    "host": "",
     "dialect": "postgres"
   }
 }
