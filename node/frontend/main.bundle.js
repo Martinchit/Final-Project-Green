@@ -1450,7 +1450,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    hostName: 'http://localhost:8080'
+    hostName: 'http://128.199.126.72.nip.io'
 };
 //# sourceMappingURL=environment.prod.js.map
 
@@ -1468,7 +1468,7 @@ var environment = {
 // The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false,
-    hostName: 'http://localhost:8080'
+    hostName: 'http://128.199.126.72.nip.io'
 };
 //# sourceMappingURL=environment.js.map
 
