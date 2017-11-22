@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     if (this.authService.token || this.facebookService.user) {
       this.router.navigate(['/account']);
     }
+    console.log(this.authService.token);
   }
 
   signUp(form: any) {

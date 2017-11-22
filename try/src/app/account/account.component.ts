@@ -34,6 +34,7 @@ export class AccountComponent implements OnInit {
   constructor(private serverService: ServerService, private router: Router, private authService: AUTHService, private facebookService: FacebookService) { }
 
   ngOnInit() {
+    console.log(this.authService.token);
     if (this.facebookService.user) {
       this.fbprofile = this.facebookService.user;
     }
