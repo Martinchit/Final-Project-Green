@@ -1373,7 +1373,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1392,20 +1392,20 @@ var ServerService = (function () {
         this.http = http;
     }
     ServerService.prototype.getInfo = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/station/location').map(function (res) { return res.json(); });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/station/location').map(function (res) { return res.json(); });
     };
     ServerService.prototype.getNearestStation = function (geo) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/station/closest', geo).map(function (res) { return res.json(); });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/station/closest', geo).map(function (res) { return res.json(); });
     };
     ServerService.prototype.getBin = function (geo) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/recyclingBin', geo).map(function (res) { return res.json(); });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/recyclingBin', geo).map(function (res) { return res.json(); });
     };
     ServerService.prototype.getNews = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/news').map(function (res) { return res.json(); });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/news').map(function (res) { return res.json(); });
     };
     ServerService.prototype.getSelectedNews = function (source) {
         console.log(source);
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/selected_news', source).map(function (res) { return res.json(); });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/selected_news', source).map(function (res) { return res.json(); });
     };
     ServerService.prototype.postFavChargers = function (chargers) {
         return this.http.post('https://finalprojectstations.firebaseio.com/.json', chargers);
@@ -1440,6 +1440,19 @@ ServerService = __decorate([
 
 var _a;
 //# sourceMappingURL=server.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/environments/environment.prod.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+var environment = {
+    production: true,
+    hostName: 'http://localhost:8080'
+};
+//# sourceMappingURL=environment.prod.js.map
 
 /***/ }),
 
