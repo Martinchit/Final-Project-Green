@@ -21,7 +21,8 @@ export class AUTHService {
 
   logIn(input: any) {
     return this.http.post(environment.hostName + '/api/logIn', input).subscribe((res) => {
-      this.token = res.json();
+      localStorage.setItem('token', res.json());
+      this.token = localStorage.getItem('token');
       this.router.navigate(['/account']);
     }, (err) => {
       alert(err);
@@ -29,10 +30,12 @@ export class AUTHService {
   }
 
   isAuthenicated() {
+    this.token = localStorage.getItem('token');
     return this.token != undefined;
   }
 
   logOut() {
+    localStorage.removeItem('token');
     return this.token = null;
   }
 
