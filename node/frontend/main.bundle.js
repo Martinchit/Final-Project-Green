@@ -86,6 +86,7 @@ var AccountComponent = (function () {
     }
     AccountComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log(this.authService.token);
         if (this.facebookService.user) {
             this.fbprofile = this.facebookService.user;
         }
@@ -458,6 +459,10 @@ var AuthGuardService = (function () {
         this.facebookService = facebookService;
     }
     AuthGuardService.prototype.canActivate = function (route, state) {
+        console.log(this.authService.isAuthenicated());
+        console.log(this.facebookService.isAuthenicated());
+        console.log(this.authService.token);
+        console.log(this.facebookService.user);
         if (this.authService.isAuthenicated() || this.facebookService.isAuthenicated()) {
             return true;
         }
@@ -518,16 +523,20 @@ var AUTHService = (function () {
     AUTHService.prototype.logIn = function (input) {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/logIn', input).subscribe(function (res) {
-            _this.token = res.json();
+            localStorage.setItem('token', res.json());
+            _this.token = localStorage.getItem('token');
+            console.log(_this.token);
             _this.router.navigate(['/account']);
         }, function (err) {
             alert(err);
         });
     };
     AUTHService.prototype.isAuthenicated = function () {
+        this.token = localStorage.getItem('token');
         return this.token != undefined;
     };
     AUTHService.prototype.logOut = function () {
+        localStorage.removeItem('token');
         return this.token = null;
     };
     return AUTHService;
@@ -571,23 +580,24 @@ var FacebookService = (function () {
         this.router = router;
     }
     FacebookService.prototype.ngOnInit = function () {
-        // this.authService.authState.subscribe((user) => {
-        //   this.user = user;
-        // });
+        this.user = JSON.parse(localStorage.getItem('token'));
     };
     FacebookService.prototype.signInWithFB = function () {
         var _this = this;
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_angular4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
         this.authService.authState.subscribe(function (user) {
-            _this.user = user;
+            localStorage.setItem('token', JSON.stringify(user));
+            _this.user = JSON.parse(localStorage.getItem('token'));
         });
         this.router.navigate(['/account']);
     };
     FacebookService.prototype.signOut = function () {
+        localStorage.removeItem('token');
         this.user = null;
         this.authService.signOut();
     };
     FacebookService.prototype.isAuthenicated = function () {
+        this.user = JSON.parse(localStorage.getItem('token'));
         return this.user != undefined;
     };
     return FacebookService;
@@ -873,7 +883,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Please Sign Up or Log in</h1>\n\n<div class='row'>\n  <form [formGroup]=\"signUpForm\" (ngSubmit)='signUp(signUpForm)' class='col-sm-6 col-xs-12'>\n    <h1>Sign Up</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n      <div *ngIf=\"(signUpForm.controls['email'].hasError('pattern') || signUpForm.controls['email'].hasError('required')) && (signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)\"\n        class=\"alert alert-info\">\n        Be aware to enter the correct pattern!\n      </div>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n      <div *ngIf=\"signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpform.controls['password'].touched)\"\n        class='alert alert-info'>\n        Password should consist of 8 digits or characters\n      </div>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!signUpForm.valid'>\n  </form>\n\n\n  <form [formGroup]=\"logInForm\" (ngSubmit)='logIn(logInForm)' class='col-sm-6 col-xs-12'>\n    <h1>Log In</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!logInForm.valid'>\n  </form>\n</div>\n\n\n<div id=\"fb\">\n  <i (click)='signUpFacebook()' class=\"fa fa-facebook-official fa-5x\" aria-hidden=\"true\"></i>\n  <h3>You can use Facebook to log in as well!</h3>\n</div>\n"
+module.exports = "<h1>Please Sign Up or Log in</h1>\n\n<div class='row'>\n  <form [formGroup]=\"signUpForm\" (ngSubmit)='signUp(signUpForm)' class='col-sm-6 col-xs-12'>\n    <h1>Sign Up</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n      <div *ngIf=\"(signUpForm.controls['email'].hasError('pattern') || signUpForm.controls['email'].hasError('required')) && (signUpForm.controls['email'].touched || signUpForm.controls['email'].dirty)\"\n        class=\"alert alert-info\">\n        Be aware to enter the correct pattern!\n      </div>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n      <div *ngIf=\"signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)\"\n        class='alert alert-info'>\n        Password should consist of 8 digits or characters\n      </div>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!signUpForm.valid'>\n  </form>\n\n\n  <form [formGroup]=\"logInForm\" (ngSubmit)='logIn(logInForm)' class='col-sm-6 col-xs-12'>\n    <h1>Log In</h1>\n    <div class='form-group'>\n      <label>Email</label>\n      <input type=\"text\" class='form-control' name='email' formControlName='email'>\n    </div>\n    <div class='form-group'>\n      <label>Password</label>\n      <input type=\"password\" class='form-control' name='password' formControlName='password'>\n    </div>\n    <input type=\"submit\" class='btn btn-success' value='submit' [disabled]='!logInForm.valid'>\n  </form>\n</div>\n\n\n<div id=\"fb\">\n  <i (click)='signUpFacebook()' class=\"fa fa-facebook-official fa-5x\" aria-hidden=\"true\"></i>\n  <h3>You can use Facebook to log in as well!</h3>\n</div>\n"
 
 /***/ }),
 
@@ -919,6 +929,7 @@ var LoginComponent = (function () {
         if (this.authService.token || this.facebookService.user) {
             this.router.navigate(['/account']);
         }
+        console.log(this.authService.token);
     };
     LoginComponent.prototype.signUp = function (form) {
         var obj = { email: form.value.email, password: form.value.password };
@@ -1482,12 +1493,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../src/app/app.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
 
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].production) {
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
