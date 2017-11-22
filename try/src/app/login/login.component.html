@@ -14,7 +14,7 @@
     <div class='form-group'>
       <label>Password</label>
       <input type="password" class='form-control' name='password' formControlName='password'>
-      <div *ngIf="signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpform.controls['password'].touched)"
+      <div *ngIf="signUpForm.controls['password'].hasError('pattern') && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
         class='alert alert-info'>
         Password should consist of 8 digits or characters
       </div>
