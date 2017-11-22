@@ -16,7 +16,6 @@ const app = Express();
 app.use(bodyParser.json());
 app.use(auth.initialize());
 
-
 app.get('/api/station/location', (req, res) => {
     let obj = [];
     var parseString = require('xml2js').parseString;
