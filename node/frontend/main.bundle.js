@@ -1450,7 +1450,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    hostName: 'http://128.199.126.72.nip.io'
+    hostName: 'http://128.199.126.72.nip.io:8080'
 };
 //# sourceMappingURL=environment.prod.js.map
 
