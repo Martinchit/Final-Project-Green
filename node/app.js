@@ -21,8 +21,7 @@ app.get('/api/station/location', (req, res) => {
     var parseString = require('xml2js').parseString;
     axios.get('https://opendata.clp.com.hk/GetChargingSectionXML.aspx?lang=EN').then((data) => {
         parseString(data.data, function (err, result) {
-            console.log(result)
-            console.log(result.ChargingStationData.stationList);
+            console.log(result.ChargingStationData.stationList[1]);
                 // result.ChargingStationData.stationList[0].station.forEach((destination) => {
                 //     Model.stations.findOrCreate({
                 //         where : {
