@@ -492,7 +492,7 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -513,7 +513,7 @@ var AUTHService = (function () {
     }
     AUTHService.prototype.signUp = function (input) {
         var _this = this;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
             _this.token = res.json();
             _this.router.navigate(['/account']);
         }, function (err) {
@@ -522,7 +522,7 @@ var AUTHService = (function () {
     };
     AUTHService.prototype.logIn = function (input) {
         var _this = this;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].hostName + '/api/logIn', input).subscribe(function (res) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/logIn', input).subscribe(function (res) {
             localStorage.setItem('token', res.json());
             _this.token = localStorage.getItem('token');
             console.log(_this.token);
@@ -1464,24 +1464,6 @@ var environment = {
     hostName: 'https://moregreenhk.website'
 };
 //# sourceMappingURL=environment.prod.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/environments/environment.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
-// The file contents for the current environment will overwrite these during build.
-var environment = {
-    production: false,
-    hostName: 'http://128.199.126.72.nip.io'
-};
-//# sourceMappingURL=environment.js.map
 
 /***/ }),
 
