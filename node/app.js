@@ -21,32 +21,31 @@ app.get('/api/station/location', (req, res) => {
     var parseString = require('xml2js').parseString;
     axios.get('https://opendata.clp.com.hk/GetChargingSectionXML.aspx?lang=EN').then((data) => {
         parseString(data.data, function (err, result) {
-            console.log(result.ChargingStationData.stationList[0]);
-                // result.ChargingStationData.stationList[0].station.forEach((destination) => {
-                //     Model.stations.findOrCreate({
-                //         where : {
-                //             key: destination.no[0]
-                //         }, defaults: {
-                //             key: destination.no[0],
-                //             location: destination.location[0]? destination.location[0]: null,
-                //             lat: destination.lat[0]? destination.lat[0]: null,
-                //             lng: destination.lng[0]? destination.lng[0]: null,
-                //             districtL: destination.districtL[0]? destination.districtL[0] : null,
-                //             districtS: destination.districtS[0] === 'Outlying Islands'? 'Tung Chung' : destination.districtS[0] ? destination.districtS[0] : null,
-                //             address: destination.address[0],
-                //             provider: provider(destination.address[0])? provider(destination.address[0]) : tesla(destination.parkingNo[0])? tesla(destination.parkingNo[0]) : destination.provider[0],
-                //             parkingNo: lot(destination.address[0])? lot(destination.address[0]) : destination.parkingNo[0]? destination.parkingNo[0] : null
-                //         }
-                //     }).spread((user, created) => {
-                //     }).catch((err) => {console.log(err);});
-                // }); 
+            result.ChargingStationData.stationList[0].station.forEach((destination) => {
+                Model.stations.findOrCreate({
+                    where : {
+                        key: destination.no[0]
+                    }, defaults: {
+                        key: destination.no[0],
+                        location: destination.location[0]? destination.location[0]: null,
+                        lat: destination.lat[0]? destination.lat[0]: null,
+                        lng: destination.lng[0]? destination.lng[0]: null,
+                        districtL: destination.districtL[0]? destination.districtL[0] : null,
+                        districtS: destination.districtS[0] === 'Outlying Islands'? 'Tung Chung' : destination.districtS[0] ? destination.districtS[0] : null,
+                        address: destination.address[0],
+                        provider: provider(destination.address[0])? provider(destination.address[0]) : tesla(destination.parkingNo[0])? tesla(destination.parkingNo[0]) : destination.provider[0],
+                        parkingNo: lot(destination.address[0])? lot(destination.address[0]) : destination.parkingNo[0]? destination.parkingNo[0] : null
+                    }
+                }).spread((user, created) => {
+                }).catch((err) => {console.log(err);});
+            }); 
         });
-        // Model.stations.findAll({}).then((data) => {
-        //     data.forEach((info) => {
-        //         obj.push(info.dataValues);
-        //     });
-        //     res.json(obj);
-        // });
+        Model.stations.findAll({}).then((data) => {
+            data.forEach((info) => {
+                obj.push(info.dataValues);
+            });
+            res.json(obj);
+        });
 
     });
 });
