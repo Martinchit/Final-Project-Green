@@ -459,10 +459,6 @@ var AuthGuardService = (function () {
         this.facebookService = facebookService;
     }
     AuthGuardService.prototype.canActivate = function (route, state) {
-        console.log(this.authService.isAuthenicated());
-        console.log(this.facebookService.isAuthenicated());
-        console.log(this.authService.token);
-        console.log(this.facebookService.user);
         if (this.authService.isAuthenicated() || this.facebookService.isAuthenicated()) {
             return true;
         }
