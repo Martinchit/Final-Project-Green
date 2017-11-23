@@ -512,7 +512,6 @@ var AUTHService = (function () {
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
             localStorage.setItem('token', res.json());
             _this.token = localStorage.getItem('token');
-            console.log(_this.token);
             _this.router.navigate(['/account']);
         }, function (err) {
             alert(err);
@@ -585,9 +584,8 @@ var FacebookService = (function () {
         this.authService.authState.subscribe(function (user) {
             localStorage.setItem('fbtoken', JSON.stringify(user));
             _this.user = JSON.parse(localStorage.getItem('fbtoken'));
-            console.log(_this.user);
+            _this.router.navigate(['/account']);
         });
-        this.router.navigate(['/account']);
     };
     FacebookService.prototype.signOut = function () {
         localStorage.removeItem('fbtoken');
@@ -929,7 +927,6 @@ var LoginComponent = (function () {
         if (this.authService.token || this.facebookService.user) {
             this.router.navigate(['/account']);
         }
-        console.log(this.authService.token);
     };
     LoginComponent.prototype.signUp = function (form) {
         var obj = { email: form.value.email, password: form.value.password };
@@ -1415,7 +1412,6 @@ var ServerService = (function () {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/news').map(function (res) { return res.json(); });
     };
     ServerService.prototype.getSelectedNews = function (source) {
-        console.log(source);
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/selected_news', source).map(function (res) { return res.json(); });
     };
     ServerService.prototype.postFavChargers = function (chargers) {

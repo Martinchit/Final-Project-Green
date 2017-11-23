@@ -25,7 +25,6 @@ export class ServerService {
   }
 
   getSelectedNews(source: string) {
-    console.log(source);
     return this.http.post(environment.hostName + '/api/selected_news', source).map((res) => res.json());
   }
 
