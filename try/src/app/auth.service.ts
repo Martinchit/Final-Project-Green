@@ -23,7 +23,6 @@ export class AUTHService {
     return this.http.post(environment.hostName + '/api/logIn', input).subscribe((res) => {
       localStorage.setItem('token', res.json());
       this.token = localStorage.getItem('token');
-      console.log(this.token);
       this.router.navigate(['/account']);
     }, (err) => {
       alert(err);
