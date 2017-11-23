@@ -584,8 +584,10 @@ var FacebookService = (function () {
         this.authService.authState.subscribe(function (user) {
             localStorage.setItem('fbtoken', JSON.stringify(user));
             _this.user = JSON.parse(localStorage.getItem('fbtoken'));
-            _this.router.navigate(['/account']);
         });
+        if (this.user) {
+            this.router.navigate(['/account']);
+        }
     };
     FacebookService.prototype.signOut = function () {
         localStorage.removeItem('fbtoken');
