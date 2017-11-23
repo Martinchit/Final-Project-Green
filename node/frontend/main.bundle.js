@@ -514,7 +514,8 @@ var AUTHService = (function () {
     AUTHService.prototype.signUp = function (input) {
         var _this = this;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment_prod__["a" /* environment */].hostName + '/api/signUp', input).subscribe(function (res) {
-            _this.token = res.json();
+            localStorage.setItem('token', res.json());
+            _this.token = localStorage.getItem('token');
             console.log(_this.token);
             _this.router.navigate(['/account']);
         }, function (err) {

@@ -12,7 +12,8 @@ export class AUTHService {
 
   signUp(input: any) {
     return this.http.post(environment.hostName + '/api/signUp', input).subscribe((res) => {
-      this.token = res.json();
+      localStorage.setItem('token', res.json());
+      this.token = localStorage.getItem('token');
       console.log(this.token);
       this.router.navigate(['/account']);
     }, (err) => {
