@@ -32,7 +32,9 @@ export class FacebookService implements OnInit {
   }
 
   isAuthenicated() {
-    this.user = JSON.parse(localStorage.getItem('token'));
+    if (localStorage.getItem('token')) {
+      this.user = JSON.parse(localStorage.getItem('token'));
+    }
     return this.user != undefined;
   }
 

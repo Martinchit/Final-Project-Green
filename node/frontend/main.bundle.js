@@ -598,7 +598,9 @@ var FacebookService = (function () {
         this.authService.signOut();
     };
     FacebookService.prototype.isAuthenicated = function () {
-        this.user = JSON.parse(localStorage.getItem('token'));
+        if (localStorage.getItem('token')) {
+            this.user = JSON.parse(localStorage.getItem('token'));
+        }
         return this.user != undefined;
     };
     return FacebookService;
