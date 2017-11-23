@@ -28,9 +28,11 @@ export class FacebookService implements OnInit {
   }
 
   signOut(): void {
-    localStorage.removeItem('fbtoken');
-    this.user = null;
-    this.authService.signOut();
+    if (this.user) {
+      localStorage.removeItem('fbtoken');
+      this.user = null;
+      this.authService.signOut();
+    }
   }
 
   isAuthenicated() {

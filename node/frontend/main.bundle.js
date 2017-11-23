@@ -532,8 +532,10 @@ var AUTHService = (function () {
         return this.token != undefined;
     };
     AUTHService.prototype.logOut = function () {
-        localStorage.removeItem('token');
-        return this.token = null;
+        if (this.token) {
+            localStorage.removeItem('token');
+            return this.token = null;
+        }
     };
     return AUTHService;
 }());
@@ -590,9 +592,11 @@ var FacebookService = (function () {
         });
     };
     FacebookService.prototype.signOut = function () {
-        localStorage.removeItem('fbtoken');
-        this.user = null;
-        this.authService.signOut();
+        if (this.user) {
+            localStorage.removeItem('fbtoken');
+            this.user = null;
+            this.authService.signOut();
+        }
     };
     FacebookService.prototype.isAuthenicated = function () {
         if (localStorage.getItem('fbtoken')) {
