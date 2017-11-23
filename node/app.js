@@ -1,8 +1,8 @@
 const Express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
-const reload = require('reload');
-const watch = require('watch');
+// const reload = require('reload');
+// const watch = require('watch');
 const Model = require('./models');
 const haversine = require('haversine-distance');
 const Bcrypt = require('./bcrypt');
@@ -175,11 +175,11 @@ app.post('/api/selected_news', (req, res) => {
     })
 })
 
-reloadServer = reload(app);
-watch.watchTree(__dirname + "/frontend", function (f, curr, prev) {
-    // Fire server-side reload event 
-    reloadServer.reload();
-});
+// reloadServer = reload(app);
+// watch.watchTree(__dirname + "/frontend", function (f, curr, prev) {
+//     // Fire server-side reload event 
+//     reloadServer.reload();
+// });
 
 app.use(Express.static('frontend'));
 
