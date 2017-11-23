@@ -577,25 +577,25 @@ var FacebookService = (function () {
         this.router = router;
     }
     FacebookService.prototype.ngOnInit = function () {
-        this.user = JSON.parse(localStorage.getItem('token'));
+        this.user = JSON.parse(localStorage.getItem('fbtoken'));
     };
     FacebookService.prototype.signInWithFB = function () {
         var _this = this;
         this.authService.signIn(__WEBPACK_IMPORTED_MODULE_1_angular4_social_login__["FacebookLoginProvider"].PROVIDER_ID);
         this.authService.authState.subscribe(function (user) {
-            localStorage.setItem('token', JSON.stringify(user));
-            _this.user = JSON.parse(localStorage.getItem('token'));
+            localStorage.setItem('fbtoken', JSON.stringify(user));
+            _this.user = JSON.parse(localStorage.getItem('fbtoken'));
         });
         this.router.navigate(['/account']);
     };
     FacebookService.prototype.signOut = function () {
-        localStorage.removeItem('token');
+        localStorage.removeItem('fbtoken');
         this.user = null;
         this.authService.signOut();
     };
     FacebookService.prototype.isAuthenicated = function () {
-        if (localStorage.getItem('token')) {
-            this.user = JSON.parse(localStorage.getItem('token'));
+        if (localStorage.getItem('fbtoken')) {
+            this.user = JSON.parse(localStorage.getItem('fbtoken'));
         }
         return this.user != undefined;
     };

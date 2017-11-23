@@ -13,27 +13,27 @@ export class FacebookService implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('token'));
+    this.user = JSON.parse(localStorage.getItem('fbtoken'));
   }
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
-      localStorage.setItem('token', JSON.stringify(user));
-      this.user = JSON.parse(localStorage.getItem('token'));
+      localStorage.setItem('fbtoken', JSON.stringify(user));
+      this.user = JSON.parse(localStorage.getItem('fbtoken'));
     });
     this.router.navigate(['/account']);
   }
 
   signOut(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('fbtoken');
     this.user = null;
     this.authService.signOut();
   }
 
   isAuthenicated() {
-    if (localStorage.getItem('token')) {
-      this.user = JSON.parse(localStorage.getItem('token'));
+    if (localStorage.getItem('fbtoken')) {
+      this.user = JSON.parse(localStorage.getItem('fbtoken'));
     }
     return this.user != undefined;
   }
