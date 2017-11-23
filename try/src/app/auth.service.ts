@@ -13,6 +13,7 @@ export class AUTHService {
   signUp(input: any) {
     return this.http.post(environment.hostName + '/api/signUp', input).subscribe((res) => {
       this.token = res.json();
+      console.log(this.token);
       this.router.navigate(['/account']);
     }, (err) => {
       alert(err);
