@@ -10,9 +10,10 @@ const auth = require('./auth')();
 const client = require('./redis');
 const jwt = require('jwt-simple');
 const config = require('./config');
+const cors = require('cors');
 const app = Express();
 
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(auth.initialize());
 
