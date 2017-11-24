@@ -28,10 +28,23 @@ export class InfoComponent implements OnInit {
   lng = 114.15769;
   zoom = 16;
 
+  selfLat;
+  selfLng;
+
+  options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
   // tslint:disable-next-line:max-line-length
   constructor(private serverService: ServerService, private router: Router, private sanitizer: DomSanitizer, private authService: AUTHService, private facebookService: FacebookService) {}
 
   ngOnInit() {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      this.selfLat = pos.coords.latitude;
+      this.selfLng = pos.coords.longitude;
+    }, this.error, this.options);
     this.serverService.getInfo().subscribe((data) => {
       data.forEach(element => {
         const obj = element;
@@ -43,8 +56,14 @@ export class InfoComponent implements OnInit {
     });
   }
 
+  error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    window.location.reload(true);
+  }
+
   loc(input: any) {
     this.router.navigate(['/home']);
+    window.open('https://www.google.com.hk/maps/dir/' + this.selfLat + ',' + this.selfLng + '/' + input.lat + ',' + input.lng);
   }
 
   getPic(input: any) {

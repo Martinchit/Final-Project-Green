@@ -799,9 +799,18 @@ var InfoComponent = (function () {
         this.lat = 22.28552;
         this.lng = 114.15769;
         this.zoom = 16;
+        this.options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
     }
     InfoComponent.prototype.ngOnInit = function () {
         var _this = this;
+        navigator.geolocation.getCurrentPosition(function (pos) {
+            _this.selfLat = pos.coords.latitude;
+            _this.selfLng = pos.coords.longitude;
+        }, this.error, this.options);
         this.serverService.getInfo().subscribe(function (data) {
             data.forEach(function (element) {
                 var obj = element;
@@ -812,8 +821,13 @@ var InfoComponent = (function () {
             _this.stations = data.sort(_this.compareDistrict);
         });
     };
+    InfoComponent.prototype.error = function (err) {
+        console.warn("ERROR(" + err.code + "): " + err.message);
+        window.location.reload(true);
+    };
     InfoComponent.prototype.loc = function (input) {
         this.router.navigate(['/home']);
+        window.open('https://www.google.com.hk/maps/dir/' + this.selfLat + ',' + this.selfLng + '/' + input.lat + ',' + input.lng);
     };
     InfoComponent.prototype.getPic = function (input) {
         // tslint:disable-next-line:max-line-length
