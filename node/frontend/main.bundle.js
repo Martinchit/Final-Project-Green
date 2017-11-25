@@ -77,7 +77,7 @@ var AccountComponent = (function () {
         this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
-            timeout: 5000,
+            timeout: 10000,
             maximumAge: 0
         };
         this.personalForm = new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormGroup */]({
@@ -801,7 +801,7 @@ var InfoComponent = (function () {
         this.zoom = 16;
         this.options = {
             enableHighAccuracy: true,
-            timeout: 5000,
+            timeout: 10000,
             maximumAge: 0
         };
     }
@@ -1222,7 +1222,7 @@ var PointComponent = (function () {
         this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
-            timeout: 5000,
+            timeout: 10000,
             maximumAge: 0
         };
     }
@@ -1333,7 +1333,7 @@ var RecycleComponent = (function () {
         this.facebookService = facebookService;
         this.options = {
             enableHighAccuracy: true,
-            timeout: 5000,
+            timeout: 10000,
             maximumAge: 0
         };
     }
