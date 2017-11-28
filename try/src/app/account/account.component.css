@@ -60,8 +60,10 @@ h1 {
     #pro {
         display: none;
     }
-    img {
-        height: 90px;
-        width:  135px;
+    #items {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
     }
 }
