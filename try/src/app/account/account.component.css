@@ -60,10 +60,9 @@ h1 {
     #pro {
         display: none;
     }
-    #items {
+    #box {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center;
     }
 }
