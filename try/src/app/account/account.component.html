@@ -32,7 +32,7 @@
 
     <div *ngIf='news' id='items'>
       <div *ngFor='let new of news' id='box'>
-        <div><img src="{{new.urlToImage}}" alt="News Image" style='height: 210px; width: 300px;'></div>
+        <div><img src="{{new.urlToImage}}" alt="News Image" style='height: 30%; width: 80%;'></div>
         <div class='chargerDetails'>
           <h3>News Title:</h3>
           <h5>{{new.title}} <button class='i' (click)="url(new)"><i class="fa fa-link" aria-hidden="true"></i></button></h5>
