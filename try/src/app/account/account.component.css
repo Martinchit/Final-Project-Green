@@ -56,3 +56,13 @@ h1 {
     height: 180px;
     width: 180px;
 }
+@media screen and (max-width: 480px) {
+    .img {
+        width: 100%;
+        text-align: center;
+    }
+    .chargerDetails {
+        width: 100%;
+        text-align: center;
+    }
+}
