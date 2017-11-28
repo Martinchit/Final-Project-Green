@@ -586,6 +586,7 @@ var FacebookService = (function () {
         this.authService.authState.subscribe(function (user) {
             localStorage.setItem('fbtoken', JSON.stringify(user));
             _this.user = JSON.parse(localStorage.getItem('fbtoken'));
+            console.log(_this.user);
             if (_this.user) {
                 _this.router.navigate(['/account']);
             }
