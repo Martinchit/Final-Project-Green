@@ -66,4 +66,7 @@ h1 {
         justify-content: space-around;
         align-items: center;
     }
+    #favorite {
+        padding-left: 0px;
+    }
 }
