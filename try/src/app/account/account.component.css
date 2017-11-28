@@ -57,7 +57,7 @@ h1 {
     width: 180px;
 }
 @media screen and (max-width: 480px) {
-    .pro {
+    #pro {
         display: none;
     }
 }
