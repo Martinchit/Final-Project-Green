@@ -57,7 +57,7 @@ h1 {
     width: 180px;
 }
 @media screen and (max-width: 480px) {
-    #pro {
+    #info {
         display: none;
     }
     #box {
@@ -67,6 +67,9 @@ h1 {
         align-items: center;
     }
     #favorite {
+        padding-left: 0px;
+    }
+    #info {
         padding-left: 0px;
     }
 }
