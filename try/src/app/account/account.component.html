@@ -1,6 +1,6 @@
 <div id='profile' class='row'>
 
-  <div class='col-sm-4' id='info'>
+  <div class='col-sm-4 col-xs-0' id='info'>
     
     <div id='pro'>
       <img *ngIf='!fbprofile' src="../../assets/GreenFace.png" id='propic'>
@@ -31,7 +31,7 @@
     </div>
 
     <div *ngIf='news' id='items'>
-      <div *ngFor='let new of news' id='box' class='row'>
+      <div *ngFor='let new of news' id='box' class='col-xs-12'>
         <div class='img col-xs-12'><img src="{{new.urlToImage}}" alt="News Image" style='height: 210px; width: 300px;'></div>
         <div class='chargerDetails col-xs-12'>
           <h3>News Title:</h3>
