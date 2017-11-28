@@ -60,4 +60,8 @@ h1 {
     #pro {
         display: none;
     }
+    img {
+        height: 90px;
+        width:  135px;
+    }
 }
