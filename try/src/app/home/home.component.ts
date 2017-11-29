@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   constructor(private serverService: ServerService, private authService: AUTHService, private facebookService: FacebookService) { }
 
   news: any;
-  source = 'national-geographic';
 
   ngOnInit() {
     this.token = new Observable((observer) => {
@@ -32,7 +31,7 @@ export class HomeComponent implements OnInit {
         observer.next(ref);
       }, 500);
     });
-    this.serverService.getSelectedNews(this.source).subscribe((data) => {
+    this.serverService.getNews().subscribe((data) => {
       this.news = data;
     });
   }
@@ -42,7 +41,6 @@ export class HomeComponent implements OnInit {
   }
 
   choice(form: any) {
-    this.source = form.value;
     this.serverService.getSelectedNews(form.value).subscribe((data) => {
       this.news = data;
     });

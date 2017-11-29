@@ -674,7 +674,6 @@ var HomeComponent = (function () {
         this.newsForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({
             choice: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required)
         });
-        this.source = 'national-geographic';
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -684,7 +683,7 @@ var HomeComponent = (function () {
                 observer.next(ref);
             }, 500);
         });
-        this.serverService.getSelectedNews(this.source).subscribe(function (data) {
+        this.serverService.getNews().subscribe(function (data) {
             _this.news = data;
         });
     };
@@ -693,7 +692,6 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.choice = function (form) {
         var _this = this;
-        this.source = form.value;
         this.serverService.getSelectedNews(form.value).subscribe(function (data) {
             _this.news = data;
         });
