@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   source;
 
   ngOnInit() {
-    this.source = {source: 'national-geographic'};
+    this.source = {choice: 'national-geographic'};
     this.token = new Observable((observer) => {
       setInterval(() => {
         const ref = this.authService.token || this.facebookService.user;
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   choice(form: any) {
-    this.source = form.value.choice;
+    this.source = {choice: form.value.choice};
     this.serverService.getSelectedNews(form.value).subscribe((data) => {
       this.news = data;
     });
