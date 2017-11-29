@@ -677,7 +677,9 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.source = { choice: 'national-geographic' };
+        if (!this.source) {
+            this.source = { choice: 'national-geographic' };
+        }
         this.token = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */](function (observer) {
             setInterval(function () {
                 var ref = _this.authService.token || _this.facebookService.user;

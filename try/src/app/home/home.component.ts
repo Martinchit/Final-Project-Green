@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
   source;
 
   ngOnInit() {
-    this.source = {choice: 'national-geographic'};
+    if (!this.source) {
+      this.source = {choice: 'national-geographic'};
+    }
     this.token = new Observable((observer) => {
       setInterval(() => {
         const ref = this.authService.token || this.facebookService.user;
