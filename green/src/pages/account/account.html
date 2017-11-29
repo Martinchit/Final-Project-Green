@@ -1,0 +1,102 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf='!check'>Account</ion-title>
+    <ion-title *ngIf='check'>{{memory}}</ion-title>
+    <ion-buttons *ngIf='check' end>
+      <button id='btn' (click)='logout()'>
+        <ion-icon id='icon' ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf='check'>
+    <ion-segment [(ngModel)]='memory'>
+      <ion-segment-button value='News'>
+        News
+      </ion-segment-button>
+      <ion-segment-button value='Chargers'>
+        Chargers
+      </ion-segment-button>
+      <ion-segment-button value='Recycling Bins'>
+        Recycling Bins
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf='!check'>
+    <form (ngSubmit)='signUp()' class='form'>
+      <h2 class='formName'>Sign Up</h2>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type='email' [(ngModel)]='sign.email' name='email'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type='password' [(ngModel)]='sign.pw' name='pw'></ion-input>
+      </ion-item>
+      <button class='submit' full ion-button type='submit'>Submit</button>
+    </form>
+
+    <form (ngSubmit)='logIn()' class='form'>
+      <h2 class='formName'>Log In</h2>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type='email' [(ngModel)]='log.email' name='email'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type='password' [(ngModel)]='log.pw' name='pw'></ion-input>
+      </ion-item>
+      <button class='submit' ion-button full type='submit'>Submit</button>
+    </form>
+  </div>
+
+  <div [ngSwitch]='memory' *ngIf='check'>
+    <ion-list *ngSwitchCase="'News'">
+      <ion-item *ngFor='let new of news | async' (click)="watchNews(new.url)">
+        <ion-thumbnail item-start>
+          <img src="{{new.urlToImage}}" alt="Article Image">
+        </ion-thumbnail>
+        <h2>{{new.title}}</h2>
+        <p>{{new.description}}</p>
+        <!-- <button id='message' ion-button item-end clear>
+          <ion-icon id='arrow' color='primary' name='arrow-forward'></ion-icon>
+        </button> -->
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Chargers'">
+      <ion-item class='station' *ngFor='let charger of chargers | async' no-lines (click)='infoC(charger)'>
+        <ion-icon id='pin' color='primary' name='pin' item-start></ion-icon>
+        <h2>{{charger.location}}</h2>
+        <h2 class='info'>District: {{charger.districtS}}</h2>
+        <p class='info'>{{charger.address}}</p>
+        <p class='info'>Provider: {{charger.provider}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Recycling Bins'">
+      <ion-item block no-lines class='bins' *ngFor='let bin of bins | async' (click)='infoB(bin)'>
+        <ion-icon id='pin' color='secondary' item-start name='pin'></ion-icon>
+        <h2>{{bin.location}}</h2>
+        <p class='info'>{{bin.wasteType}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <button id='btn' ion-button *ngIf='!check' clear block color='primary' (click)='f()'>
+    <ion-icon id='fb' ios="logo-facebook" md="logo-facebook"></ion-icon>
+  </button>
+
+</ion-content>

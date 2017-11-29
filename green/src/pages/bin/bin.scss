@@ -1,0 +1,24 @@
+page-bin {
+    .bin {
+        cursor: pointer;
+    }
+    .info {
+        font-size: 14px;
+    }
+    #btn {
+        height: 35px;
+    }
+    #icon {
+        font-size: 35px;
+    }
+    #pin {
+        font-size: 55px;
+        color: color($colors, secondary);
+    }
+    .option {
+        font-size: 30px;
+    }
+    .slide {
+        width: 80px;
+    }
+}
