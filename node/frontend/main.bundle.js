@@ -677,13 +677,17 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.source = 'national-geographic';
         this.token = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */](function (observer) {
             setInterval(function () {
                 var ref = _this.authService.token || _this.facebookService.user;
                 observer.next(ref);
             }, 500);
         });
-        this.serverService.getNews().subscribe(function (data) {
+        // this.serverService.getNews().subscribe((data) => {
+        //   this.news = data;
+        // });
+        this.serverService.getSelectedNews(this.source).subscribe(function (data) {
             _this.news = data;
         });
     };
@@ -692,6 +696,7 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.choice = function (form) {
         var _this = this;
+        this.source = form.value;
         this.serverService.getSelectedNews(form.value).subscribe(function (data) {
             _this.news = data;
         });
