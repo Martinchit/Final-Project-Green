@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
-import { Station } from '../station.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Location } from '../location.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'angular4-social-login/auth.service';
 import { AUTHService } from '../auth.service';
@@ -16,7 +14,7 @@ import { FacebookService } from '../facebook.service';
 })
 export class InfoComponent implements OnInit {
 
-  stations: Station[] = [];
+  stations: any[];
   address;
   img;
 

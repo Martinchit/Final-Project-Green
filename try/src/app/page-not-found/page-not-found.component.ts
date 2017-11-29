@@ -8,8 +8,6 @@ import { ServerService } from '../server.service';
 })
 export class PageNotFoundComponent implements OnInit {
 
- 
-
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {

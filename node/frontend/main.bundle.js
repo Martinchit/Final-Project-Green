@@ -782,7 +782,6 @@ var InfoComponent = (function () {
         this.sanitizer = sanitizer;
         this.authService = authService;
         this.facebookService = facebookService;
-        this.stations = [];
         this.infoWindowOpened = null;
         this.locations = [];
         this.lat = 22.28552;

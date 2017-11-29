@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
 import { Observable } from 'rxjs/Observable';
-import { Location } from '../location.model';
-import { Station } from '../station.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AUTHService } from '../auth.service';
