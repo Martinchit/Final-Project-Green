@@ -86,7 +86,6 @@ var AccountComponent = (function () {
     }
     AccountComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log(this.authService.token);
         if (this.facebookService.user) {
             this.fbprofile = this.facebookService.user;
         }
@@ -586,7 +585,6 @@ var FacebookService = (function () {
         this.authService.authState.subscribe(function (user) {
             localStorage.setItem('fbtoken', JSON.stringify(user));
             _this.user = JSON.parse(localStorage.getItem('fbtoken'));
-            console.log(_this.user);
             if (_this.user) {
                 _this.router.navigate(['/account']);
             }
@@ -698,16 +696,6 @@ var HomeComponent = (function () {
             _this.news = data;
         });
     };
-    // success(pos) {
-    //   const crd = pos.coords;
-    //   console.log(crd);
-    //   console.log('Your current position is:');
-    //   console.log(`Latitude : ${crd.latitude}`);
-    //   console.log(`Longitude: ${crd.longitude}`);
-    //   console.log(`More or less ${crd.accuracy} meters.`);
-    //   const lat = pos.coords.latitude;
-    //   console.log(this.lat);
-    // }
     HomeComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
         var ref = this.authService.token || Number(this.facebookService.user.id);
@@ -1125,7 +1113,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/page-not-found/page-not-found.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>FYI mud 9 dou mo</h1>"
+module.exports = "<h1 style=\"text-align: center;\">Nothing</h1>"
 
 /***/ }),
 

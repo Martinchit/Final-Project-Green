@@ -21,7 +21,6 @@ export class FacebookService implements OnInit {
     this.authService.authState.subscribe((user) => {
       localStorage.setItem('fbtoken', JSON.stringify(user));
       this.user = JSON.parse(localStorage.getItem('fbtoken'));
-      console.log(this.user);
       if (this.user) {
         this.router.navigate(['/account']);
       }

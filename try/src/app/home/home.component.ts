@@ -46,17 +46,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // success(pos) {
-  //   const crd = pos.coords;
-  //   console.log(crd);
-  //   console.log('Your current position is:');
-  //   console.log(`Latitude : ${crd.latitude}`);
-  //   console.log(`Longitude: ${crd.longitude}`);
-  //   console.log(`More or less ${crd.accuracy} meters.`);
-  //   const lat = pos.coords.latitude;
-  //   console.log(this.lat);
-  // }
-
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
     let ref = this.authService.token || Number(this.facebookService.user.id);
