@@ -10,7 +10,7 @@
     <ion-title *ngIf='!check'>Account</ion-title>
     <ion-title *ngIf='check'>{{memory}}</ion-title>
     <ion-buttons *ngIf='check' end>
-      <button id='btn' (click)='logout()'>
+      <button id='close' (click)='logout()'>
         <ion-icon id='icon' ios="ios-close" md="md-close"></ion-icon>
       </button>
     </ion-buttons>
@@ -35,6 +35,10 @@
 
 
 <ion-content>
+
+  <!-- <ion-refresher no-lines *ngIf='check' (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
 
   <div *ngIf='!check'>
     <form (ngSubmit)='signUp()' class='form'>
@@ -81,7 +85,7 @@
       <ion-item class='station' *ngFor='let charger of chargers | async' no-lines (click)='infoC(charger)'>
         <ion-icon id='pin' color='primary' name='pin' item-start></ion-icon>
         <h2>{{charger.location}}</h2>
-        <h2 class='info'>District: {{charger.districtS}}</h2>
+        <h2 class='info'>{{charger.districtS}}</h2>
         <p class='info'>{{charger.address}}</p>
         <p class='info'>Provider: {{charger.provider}}</p>
       </ion-item>

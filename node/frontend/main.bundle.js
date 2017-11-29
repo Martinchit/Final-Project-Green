@@ -111,7 +111,7 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
-            var ticket = _this.authService.token || _this.facebookService.user.id;
+            var ticket = _this.authService.token || Number(_this.facebookService.user.id);
             ref.forEach(function (news) {
                 if (news.id === ticket) {
                     _this.news.push(news);
@@ -133,7 +133,7 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
-            var ticket = _this.authService.token || _this.facebookService.user.id;
+            var ticket = _this.authService.token || Number(_this.facebookService.user.id);
             ref.forEach(function (news) {
                 if (news.id === ticket) {
                     _this.news.push(news);
@@ -154,7 +154,7 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
-            var ticket = _this.authService.token || _this.facebookService.user.id;
+            var ticket = _this.authService.token || Number(_this.facebookService.user.id);
             ref.forEach(function (charger) {
                 if (charger.id === ticket) {
                     _this.chargers.push(charger);
@@ -172,7 +172,7 @@ var AccountComponent = (function () {
                 return false;
             }
             var ref = Object.values(JSON.parse(data['_body']));
-            var ticket = _this.authService.token || _this.facebookService.user.id;
+            var ticket = _this.authService.token || Number(_this.facebookService.user.id);
             ref.forEach(function (bin) {
                 if (bin.id === ticket) {
                     _this.bins.push(bin);
@@ -710,10 +710,10 @@ var HomeComponent = (function () {
     // }
     HomeComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
-        var ref = this.authService.token || this.facebookService.user.id;
+        var ref = this.authService.token || Number(this.facebookService.user.id);
         var obj = input;
         obj['id'] = ref;
-        return this.serverService.postFavNews(input).subscribe();
+        return this.serverService.postFavNews(obj).subscribe();
     };
     HomeComponent.prototype.logout = function () {
         this.authService.logOut();
@@ -860,7 +860,7 @@ var InfoComponent = (function () {
     };
     InfoComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
-        var ref = this.authService.token || this.facebookService.user.id;
+        var ref = this.authService.token || Number(this.facebookService.user.id);
         var obj = input;
         obj['id'] = ref;
         return this.serverService.postFavChargers(obj).subscribe();
@@ -1373,7 +1373,7 @@ var RecycleComponent = (function () {
     };
     RecycleComponent.prototype.favorite = function (input) {
         // tslint:disable-next-line:prefer-const
-        var ref = this.authService.token || this.facebookService.user.id;
+        var ref = this.authService.token || Number(this.facebookService.user.id);
         var obj = input;
         obj['id'] = ref;
         return this.serverService.postFavBins(obj).subscribe();

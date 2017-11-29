@@ -59,10 +59,10 @@ export class HomeComponent implements OnInit {
 
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
-    let ref = this.authService.token || this.facebookService.user.id;
+    let ref = this.authService.token || Number(this.facebookService.user.id);
     let obj = input;
     obj['id'] = ref;
-    return this.serverService.postFavNews(input).subscribe();
+    return this.serverService.postFavNews(obj).subscribe();
   }
 
   logout() {

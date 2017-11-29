@@ -6,7 +6,7 @@ import { ServerService } from '../server.service';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Observable } from 'rxjs/Observable';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Facebook } from '@ionic-native/facebook';
 
 /**
  * Generated class for the AccountPage page.
@@ -49,6 +49,7 @@ export class AccountPage {
           observer.next(null);
           this.check = null;
         }
+        console.log(this.check);
       }, 100)
     })
     // console.log(this.token);
@@ -57,6 +58,18 @@ export class AccountPage {
     // }
     this.news = new Observable((observer) => {
       setInterval(() => {
+        this.token = new Observable((observer) => {
+          setInterval(() => {
+            if(localStorage.getItem('token')) {
+              observer.next(JSON.parse(localStorage.getItem('token')));
+              this.check = JSON.parse(localStorage.getItem('token'));
+            } else {
+              observer.next(null);
+              this.check = null;
+            }
+            console.log(this.check);
+          }, 100)
+        })
         this.serverService.getFavNews().subscribe((data) => {
           const value = JSON.parse(data['_body']);
           let ref = [];
@@ -75,6 +88,18 @@ export class AccountPage {
     })
     this.chargers = new Observable((observer) => {
       setInterval(() => {
+        this.token = new Observable((observer) => {
+          setInterval(() => {
+            if(localStorage.getItem('token')) {
+              observer.next(JSON.parse(localStorage.getItem('token')));
+              this.check = JSON.parse(localStorage.getItem('token'));
+            } else {
+              observer.next(null);
+              this.check = null;
+            }
+            console.log(this.check);
+          }, 100)
+        })
         this.serverService.getFavChargers().subscribe((data) => {
           const value = JSON.parse(data['_body']);
           let ref = [];
@@ -93,6 +118,18 @@ export class AccountPage {
     })
     this.bins = new Observable((observer) => {
       setInterval(() => {
+        this.token = new Observable((observer) => {
+          setInterval(() => {
+            if(localStorage.getItem('token')) {
+              observer.next(JSON.parse(localStorage.getItem('token')));
+              this.check = JSON.parse(localStorage.getItem('token'));
+            } else {
+              observer.next(null);
+              this.check = null;
+            }
+            console.log(this.check);
+          }, 100)
+        })
         this.serverService.getFavBins().subscribe((data)=> {
           const value = JSON.parse(data['_body']);
           console.log(value)
@@ -168,11 +205,19 @@ export class AccountPage {
   
   f() {
     this.fb.login(['public_profile', 'email']).then((res) => {
-      localStorage.setItem('token', res.authResponse.userID);
-      this.check = res.authResponse.userID;
+      localStorage.setItem('token', JSON.parse(res.authResponse.userID));
+      this.check = JSON.parse(res.authResponse.userID);
     }).catch((err) => {
       console.log('Error logging into Facebook', err)
     });
   }
+
+  // doRefresh(refresher) {
+
+  //   setTimeout(() => {
+  //     refresher.complete();
+
+  //   }, 1000);
+  // }
 
 }

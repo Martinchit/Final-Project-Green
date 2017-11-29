@@ -100,7 +100,7 @@ export class InfoComponent implements OnInit {
 
   favorite(input: any) {
     // tslint:disable-next-line:prefer-const
-    const ref = this.authService.token || this.facebookService.user.id;
+    const ref = this.authService.token || Number(this.facebookService.user.id);
     let obj = input;
     obj['id'] = ref;
     return this.serverService.postFavChargers(obj).subscribe();

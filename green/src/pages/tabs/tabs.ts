@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NewsPage } from '../news/news';
 import { AccountPage } from '../account/account';
 import { ChargerPage } from '../charger/charger';

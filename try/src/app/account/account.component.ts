@@ -59,7 +59,7 @@ export class AccountComponent implements OnInit {
         return false;
       }
       const ref = Object.values(JSON.parse(data['_body']));
-      const ticket = this.authService.token || this.facebookService.user.id;
+      const ticket = this.authService.token || Number(this.facebookService.user.id);
       ref.forEach((news) => {
         if (news.id === ticket) {
           this.news.push(news);
@@ -82,7 +82,7 @@ export class AccountComponent implements OnInit {
         return false;
       }
       const ref = Object.values(JSON.parse(data['_body']));
-      const ticket = this.authService.token || this.facebookService.user.id;
+      const ticket = this.authService.token || Number(this.facebookService.user.id);
       ref.forEach((news) => {
         if (news.id === ticket) {
           this.news.push(news);
@@ -103,7 +103,7 @@ export class AccountComponent implements OnInit {
         return false;
       }
       const ref = Object.values(JSON.parse(data['_body']));
-      const ticket = this.authService.token || this.facebookService.user.id;
+      const ticket = this.authService.token || Number(this.facebookService.user.id);
       ref.forEach((charger) => {
         if (charger.id === ticket) {
           this.chargers.push(charger);
@@ -121,7 +121,7 @@ export class AccountComponent implements OnInit {
         return false;
       }
       const ref = Object.values(JSON.parse(data['_body']));
-      const ticket = this.authService.token || this.facebookService.user.id;
+      const ticket = this.authService.token || Number(this.facebookService.user.id);
       ref.forEach((bin) => {
         if (bin.id === ticket) {
           this.bins.push(bin);
