@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  hostName: 'www.moregreenhk.website'
+  hostName: 'https://www.moregreenhk.website'
 };
