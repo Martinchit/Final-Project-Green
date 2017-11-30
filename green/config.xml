@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://128.1.70.103:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -82,6 +82,8 @@
     <allow-navigation href="http://192.168.0.103:8101" />
     <allow-navigation href="http://192.168.1.147:8101" />
     <allow-navigation href="http://192.168.1.147:8100" />
+    <allow-navigation href="http://128.1.70.103:8101" />
+    <allow-navigation href="http://128.1.70.103:8100" />
     <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.8.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
@@ -102,5 +104,10 @@
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.1.0">
         <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
     </plugin>
-    <allow-navigation href="http://128.1.70.103:8101" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="1936639086587896" />
+        <variable name="APP_NAME" value="Demo" />
+    </plugin>
 </widget>
