@@ -10,7 +10,7 @@ export class FilterDistrictPipe implements PipeTransform {
       return chargers;
     }
     return chargers.filter((charger) => {
-      return charger.replace(' ', '').toLowerCase().includes(term.replace(' ', '').toLowerCase());
+      return charger.districtS.replace(' ', '').toLowerCase().includes(term.replace(' ', '').toLowerCase());
     });
   }
 
