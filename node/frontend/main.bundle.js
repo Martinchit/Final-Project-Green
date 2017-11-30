@@ -853,7 +853,6 @@ var InfoComponent = (function () {
         window.location.reload(true);
     };
     InfoComponent.prototype.loc = function (input) {
-        this.router.navigate(['/home']);
         window.open('https://www.google.com.hk/maps/dir/' + this.selfLat + ',' + this.selfLng + '/' + input.lat + ',' + input.lng);
     };
     InfoComponent.prototype.getPic = function (input) {

@@ -59,7 +59,6 @@ export class InfoComponent implements OnInit {
   }
 
   loc(input: any) {
-    this.router.navigate(['/home']);
     window.open('https://www.google.com.hk/maps/dir/' + this.selfLat + ',' + this.selfLng + '/' + input.lat + ',' + input.lng);
   }
 
