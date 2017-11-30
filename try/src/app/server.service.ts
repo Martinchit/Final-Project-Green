@@ -1,31 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { environment } from '../environments/environment.prod';
+// import { environment } from '../environments/environment.prod';
 
 @Injectable()
 export class ServerService {
 
   constructor(private http: Http) { }
 
+  server = 'www.moregreenhk.website';
+
   getInfo() {
-    return this.http.get( environment.hostName + '/api/station/location').map((res) => res.json());
+    return this.http.get( this.server + '/api/station/location').map((res) => res.json());
   }
 
   getNearestStation(geo: any) {
-    return this.http.post( environment.hostName + '/api/station/closest', geo).map((res) => res.json());
+    return this.http.post( this.server + '/api/station/closest', geo).map((res) => res.json());
   }
 
   getBin(geo: any) {
-    return this.http.post( environment.hostName + '/api/recyclingBin', geo).map((res) => res.json());
+    return this.http.post( this.server + '/api/recyclingBin', geo).map((res) => res.json());
   }
 
   getNews() {
-    return this.http.get(environment.hostName + '/api/news').map((res) => res.json());
+    return this.http.get( this.server + '/api/news').map((res) => res.json());
   }
 
   getSelectedNews(source: string) {
-    return this.http.post(environment.hostName + '/api/selected_news', source).map((res) => res.json());
+    return this.http.post( this.server + '/api/selected_news', source).map((res) => res.json());
   }
 
   postFavChargers(chargers: any) {
