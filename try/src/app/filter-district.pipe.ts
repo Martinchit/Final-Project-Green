@@ -13,5 +13,4 @@ export class FilterDistrictPipe implements PipeTransform {
       return charger.districtS.replace(/\s/g, '').toLowerCase().includes(term.replace(/\s/g, '').toLowerCase());
     });
   }
-
 }
