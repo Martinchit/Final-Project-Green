@@ -3,7 +3,10 @@ h1 {
 }
 #filerDistrict {
     text-align: center;
-    width: 30%;
+    margin: 30px auto 5px auto;
+}
+#filerDistrict label {
+    margin-bottom: 5px;
 }
 #table {
     width: 85%;
