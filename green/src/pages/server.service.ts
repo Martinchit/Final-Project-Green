@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServerService {
 
-  server = 'https://moregreenhk.website';
+  server = 'https://www.moregreenhk.website';
 
   constructor(private http: Http) { }
 
