@@ -1443,7 +1443,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ServerService = (function () {
     function ServerService(http) {
         this.http = http;
-        this.server = 'www.moregreenhk.website';
+        this.server = 'https://www.moregreenhk.website';
     }
     ServerService.prototype.getInfo = function () {
         return this.http.get(this.server + '/api/station/location').map(function (res) { return res.json(); });

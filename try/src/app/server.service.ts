@@ -8,7 +8,7 @@ export class ServerService {
 
   constructor(private http: Http) { }
 
-  server = 'www.moregreenhk.website';
+  server = 'https://www.moregreenhk.website';
 
   getInfo() {
     return this.http.get( this.server + '/api/station/location').map((res) => res.json());
