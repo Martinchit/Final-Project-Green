@@ -1503,7 +1503,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    hostName: 'https://moregreenhk.website'
+    hostName: 'www.moregreenhk.website'
 };
 //# sourceMappingURL=environment.prod.js.map
 

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  hostName: 'www.128.199.126.72.nip.io'
+  hostName: 'www.moregreenhk.website'
 };
