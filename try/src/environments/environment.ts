@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  hostName: 'http://128.199.126.72.nip.io'
+  hostName: 'www.128.199.126.72.nip.io'
 };
