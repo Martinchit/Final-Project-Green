@@ -14,6 +14,7 @@ import { routingComponents } from './app-routing.module';
 import { AUTHService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { FacebookService } from './facebook.service';
+import { FilterDistrictPipe } from './filter-district.pipe';
 
 const config = new AuthServiceConfig([
   {
@@ -29,7 +30,8 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    FilterDistrictPipe
   ],
   imports: [
     BrowserModule,

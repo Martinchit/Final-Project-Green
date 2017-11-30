@@ -1,6 +1,10 @@
 h1 {
     text-align: center;
 }
+#filerDistrict {
+    text-align: center;
+    width: 30%;
+}
 #table {
     width: 85%;
     margin: 20px auto;

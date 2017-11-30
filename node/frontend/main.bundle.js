@@ -365,12 +365,14 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__auth_service__ = __webpack_require__("../../../../../src/app/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__auth_guard_service__ = __webpack_require__("../../../../../src/app/auth-guard.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__facebook_service__ = __webpack_require__("../../../../../src/app/facebook.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__filter_district_pipe__ = __webpack_require__("../../../../../src/app/filter-district.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -404,7 +406,8 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["b" /* routingComponents */]
+            __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["b" /* routingComponents */],
+            __WEBPACK_IMPORTED_MODULE_12__filter_district_pipe__["a" /* FilterDistrictPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -615,6 +618,42 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/filter-district.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterDistrictPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FilterDistrictPipe = (function () {
+    function FilterDistrictPipe() {
+    }
+    FilterDistrictPipe.prototype.transform = function (chargers, term) {
+        if (term === undefined) {
+            return chargers;
+        }
+        return chargers.filter(function (charger) {
+            return charger.replace(' ', '').toLowerCase().includes(term.replace(' ', '').toLowerCase());
+        });
+    };
+    return FilterDistrictPipe;
+}());
+FilterDistrictPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'filterDistrict'
+    })
+], FilterDistrictPipe);
+
+//# sourceMappingURL=filter-district.pipe.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/home/home.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -731,7 +770,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n    text-align: center;\n}\n#table {\n    width: 85%;\n    margin: 20px auto;\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#agm {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    text-align: center;\n    margin-top: 40px;\n}\n#map {\n    width: 90%;\n    height: 500px;\n}\nimg {\n    height: 200px;\n    width: 200px;\n    margin: 5px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}", ""]);
+exports.push([module.i, "h1 {\n    text-align: center;\n}\n#filerDistrict {\n    text-align: center;\n    width: 30%;\n}\n#table {\n    width: 85%;\n    margin: 20px auto;\n    text-align: center;\n}\nth {\n    text-align: center;\n}\n#agm {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    text-align: center;\n    margin-top: 40px;\n}\n#map {\n    width: 90%;\n    height: 500px;\n}\nimg {\n    height: 200px;\n    width: 200px;\n    margin: 5px auto;\n}\n.a {\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.star {\n    background: none;\n    border: none;\n    color: rgb(229,229,0);\n}", ""]);
 
 // exports
 
@@ -744,7 +783,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/info/info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Charging Station in HK</h1>\n\n<div id='agm'>\n  <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [disableDefaultUI]=\"false\" id=\"map\">\n    <agm-marker *ngFor=\"let location of locations; let i = index\" (markerClick)=\"getPic(location)\" [latitude]='location.lat' [longitude]='location.lng'>\n      <agm-info-window  class='agm-info-window-content' [isOpen]='open'>\n        <h4>\n          <strong>{{location.location}}</strong>\n        </h4>\n        <br>\n        <img [src]=\"img\">\n        <br>\n        <button class='btn btn-danger' (click)=\"more(location)\">More</button>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>\n\n<div *ngIf=\"address\">\n  <iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" [src]=\"address\" allowfullscreen></iframe>\n</div>\n\n<div id=\"table\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">Region</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n        <th scope=\"col\">Favorite</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations\">\n        <th scope=\"row\">{{station.districtL}}</th>\n        <td>{{station.location}}</td>\n        <td>{{station.districtS}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Location</button></td>\n        <td><button class='star' (click)=\"favorite(station)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
+module.exports = "<h1>Charging Station in HK</h1>\n\n<div id='agm'>\n  <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [disableDefaultUI]=\"false\" id=\"map\">\n    <agm-marker *ngFor=\"let location of locations; let i = index\" (markerClick)=\"getPic(location)\" [latitude]='location.lat' [longitude]='location.lng'>\n      <agm-info-window  class='agm-info-window-content' [isOpen]='open'>\n        <h4>\n          <strong>{{location.location}}</strong>\n        </h4>\n        <br>\n        <img [src]=\"img\">\n        <br>\n        <button class='btn btn-danger' (click)=\"more(location)\">More</button>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>\n\n<form id=\"filerDistrict\" *ngIf='address'>\n    <label>Search District</label>\n    <input type=\"text\" [(ngModel)]=\"term\" name=\"term\">\n</form>\n\n<div id=\"table\">\n  <table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th scope=\"col\">Region</th>\n        <th scope=\"col\">Parking</th>\n        <th scope=\"col\">District</th>\n        <th scope=\"col\">Provider</th>\n        <th scope=\"col\">Parking Lot</th>\n        <th scope=\"col\">Location</th>\n        <th scope=\"col\">Favorite</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let station of stations | filterDistrict: term\">\n        <th scope=\"row\">{{station.districtL}}</th>\n        <td>{{station.location}}</td>\n        <td>{{station.districtS}}</td>\n        <td>{{station.provider}}</td>\n        <td>{{station.parkingNo}}</td>\n        <td><button class=\"btn btn-info\" (click)=\"loc(station)\">Location</button></td>\n        <td><button class='star' (click)=\"favorite(station)\"><i class=\"fa fa-2x fa-star\" aria-hidden=\"true\"></i></button></td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n\n\n<div class='a'>\n  <a (click)='logout()' routerLink=\"/home\" class='btn btn-warning'>Log Out</a>\n</div>\n"
 
 /***/ }),
 

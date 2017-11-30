@@ -15,7 +15,6 @@ import { FacebookService } from '../facebook.service';
 export class InfoComponent implements OnInit {
 
   stations: any[];
-  address;
   img;
 
   infoWindowOpened = null;

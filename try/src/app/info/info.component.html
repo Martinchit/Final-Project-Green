@@ -16,9 +16,10 @@
   </agm-map>
 </div>
 
-<div *ngIf="address">
-  <iframe width="600" height="450" frameborder="0" style="border:0" [src]="address" allowfullscreen></iframe>
-</div>
+<form id="filerDistrict" *ngIf='address'>
+    <label>Search District</label>
+    <input type="text" [(ngModel)]="term" name="term">
+</form>
 
 <div id="table">
   <table class="table table-striped">
@@ -34,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let station of stations">
+      <tr *ngFor="let station of stations | filterDistrict: term">
         <th scope="row">{{station.districtL}}</th>
         <td>{{station.location}}</td>
         <td>{{station.districtS}}</td>
