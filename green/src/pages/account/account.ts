@@ -21,7 +21,7 @@ import { Facebook } from '@ionic-native/facebook';
 })
 export class AccountPage {
 
-  server = 'https://moregreenhk.website';
+  server = 'https://www.moregreenhk.website';
   token: Observable<any[]>;
   memory = 'News';
   news: Observable<any[]>;
@@ -151,13 +151,13 @@ export class AccountPage {
 
   signUp(){
     const obj = {email: this.sign.email, password: this.sign.pw};
-    this.sign.email = null;
-    this.sign.pw = null;
     return this.http.post(this.server + '/api/signUp', obj).subscribe((res) => {
       localStorage.setItem('token', JSON.stringify(res.json().token));
       console.log(localStorage.getItem('token'));
       this.token = JSON.parse(localStorage.getItem('token'));
       this.check = JSON.parse(localStorage.getItem('token'));
+      this.sign.email = null;
+      this.sign.pw = null;
     }, (err) => {
       alert(err);
     })
@@ -165,13 +165,13 @@ export class AccountPage {
 
   logIn() {
     const obj = {email: this.log.email, password: this.log.pw};
-    this.log.email = null;
-    this.log.pw = null;
     return this.http.post(this.server + '/api/logIn', obj).subscribe((res) => {
       localStorage.setItem('token', JSON.stringify(res.json()));
       console.log(localStorage.getItem('token'));
       this.token = JSON.parse(localStorage.getItem('token'));
       this.check = JSON.parse(localStorage.getItem('token'));
+      this.log.email = null;
+      this.log.pw = null;
     }, (err) => {
       alert('Email or Passsword is Incorrect!');
     })

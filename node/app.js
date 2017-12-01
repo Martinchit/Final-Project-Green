@@ -122,9 +122,7 @@ app.post('/api/logIn', (req, res) => {
                 let verify = users.find((user) => {
                     return user.email === req.body.email;
                 });
-                console.log(verify);
                 Bcrypt.checkPassword(req.body.password, verify.password).then((result) => {
-                    console.log(result)
                     if(result) {
                         let payload = {
                             id: verify.email
