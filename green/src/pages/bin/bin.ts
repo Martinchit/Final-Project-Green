@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ServerService } from '../server.service';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
@@ -22,7 +22,7 @@ export class BinPage {
   check;
   token: Observable<any[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private serverService: ServerService, private launchNavigator: LaunchNavigator) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private serverService: ServerService, private launchNavigator: LaunchNavigator, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -62,6 +62,11 @@ export class BinPage {
         this.bins = nearestBins;
       })
     })
+    let loader = this.loadingCtrl.create({
+      content: "Updating...",
+      duration: 2000
+    });
+    loader.present();
   }
 
   fav(news: any) {

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ServerService } from '../server.service';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Observable } from 'rxjs/Observable';
-
 
 /**
  * Generated class for the ChargerPage page.
@@ -23,7 +22,7 @@ export class ChargerPage {
   token: Observable<any[]>;
   check;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private serverService: ServerService, private launchNavigator: LaunchNavigator) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private serverService: ServerService, private launchNavigator: LaunchNavigator, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -66,6 +65,11 @@ export class ChargerPage {
         console.log(this.chargers);
       })
     })
+    let loader = this.loadingCtrl.create({
+      content: "Updating...",
+      duration: 2000
+    });
+    loader.present();
   }
 
   fav(charger: any) {

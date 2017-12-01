@@ -20,7 +20,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
-
+import { LoadingController } from 'ionic-angular';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { Facebook } from '@ionic-native/facebook';
     GoogleMaps,
     LaunchNavigator,
     NativeStorage,
-    Facebook
+    Facebook,
+    LoadingController
   ]
 })
 export class AppModule {}
