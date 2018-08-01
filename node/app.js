@@ -53,7 +53,6 @@ app.get('/api/station/location', (req, res) => {
 
 app.post('/api/station/closest', (req, res) => {
     Model.stations.findAll({}).then((data) => {
-        console.log(data);
         let stations = data.map((station) => {
             const stationGeo = {
                 lat: Number(station.dataValues.lat),
@@ -100,7 +99,6 @@ app.post('/api/signUp', (req, res) => [
                     email: req.body.email,
                     password: hash
                 });
-                console.log(obj);
                 client.hmset('recyclers', obj);
                 let payload = {
                     id: req.body.email
@@ -135,12 +133,11 @@ app.post('/api/logIn', (req, res) => {
                 });
             });
     } else {
-            res.sendStatus(401);
+        res.sendStatus(401);
     }
 });
 
 app.post('/api/recyclingBin', (req, res) => {
-    console.log(req.body);
     axios.get('https://api.data.gov.hk/v1/nearest-recyclable-collection-points?lat=' + req.body.lat + '&long=' + req.body.lng + '&max=10').then((bins) => {
         let obj = bins.data.results.map((bin) => {
             const binGeo = {
@@ -159,6 +156,8 @@ app.post('/api/recyclingBin', (req, res) => {
             return obj;
         })
         res.json(obj);
+    }).catch(err => {
+        res.sendStatus(400)
     });
 });
 
@@ -173,12 +172,6 @@ app.post('/api/selected_news', (req, res) => {
         res.json(data.data.articles)
     })
 })
-
-// reloadServer = reload(app);
-// watch.watchTree(__dirname + "/frontend", function (f, curr, prev) {
-//     // Fire server-side reload event 
-//     reloadServer.reload();
-// });
 
 app.use(Express.static('frontend'));
 
@@ -256,3 +249,5 @@ function compareDistance(a, b) {
     }
     return 0;
 }
+
+module.exports.mainApp = app
