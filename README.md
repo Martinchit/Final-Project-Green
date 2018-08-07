@@ -1,6 +1,6 @@
 # More Green HK - Application related to Environment
 
-More Green HK is an application providing information for user to improve our environmental condition in Hong Kong. Both web version and mobile version are developed. For web version, feel free to check on https://www.moregreenhk.website/home.
+More Green HK is an application providing information for user to improve our environmental condition in Hong Kong. Both web version and mobile version are developed. For web version, feel free to check on https://www.moregreenhk.website/.
 
 Mobile version will be launch in the app store soon.
 
